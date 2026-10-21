@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Porsche 911 Carrera | VELOCIA</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        body {
+            background-color: #0b1014;
+            color: #ffffff;
+        }
+
+        .car-details-container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 50px auto;
+        }
+
+        .car-details-main {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .main-car-image {
+            width: 100%;
+            height: 430px;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #2a3138;
+        }
+
+        .main-car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .car-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .car-gallery img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #2a3138;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .car-gallery img:hover {
+            transform: scale(1.05);
+            border-color: #c9a227;
+        }
+
+        .car-brand {
+            color: #c9a227;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .car-name {
+            font-size: 45px;
+            margin: 10px 0;
+        }
+
+        .car-price {
+            color: #c9a227;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .car-description {
+            color: #b9b9b9;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .quick-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .quick-spec-box {
+            background-color: #12191f;
+            padding: 15px;
+            border: 1px solid #283038;
+            border-radius: 8px;
+        }
+
+        .quick-spec-box p {
+            color: #999999;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .quick-spec-box h4 {
+            color: white;
+            font-size: 15px;
+        }
+
+        .details-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .test-drive-btn {
+            flex: 1;
+            background-color: #c9a227;
+            color: #111111;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .wishlist-btn {
+            background-color: transparent;
+            color: #c9a227;
+            border: 1px solid #c9a227;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .details-section {
+            width: 90%;
+            max-width: 1300px;
+            margin: 80px auto;
+        }
+
+        .details-section h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-line {
+            width: 60px;
+            height: 3px;
+            background-color: #c9a227;
+            margin-bottom: 35px;
+        }
+
+        .specifications-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .spec-card {
+            background-color: #12191f;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #283038;
+        }
+
+        .spec-card h4 {
+            color: #999999;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .spec-card p {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .color-box {
+            text-align: center;
+        }
+
+        .color-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            margin-bottom: 8px;
+            border: 3px solid white;
+        }
+
+        .black { background-color: black; }
+        .white { background-color: white; }
+        .red { background-color: #b51d2a; }
+        .yellow { background-color: #d4a514; }
+        .blue { background-color: #183d72; }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-box {
+            background-color: #12191f;
+            padding: 20px;
+            border-left: 3px solid #c9a227;
+            border-radius: 5px;
+        }
+
+        .feature-box h4 {
+            margin-bottom: 8px;
+        }
+
+        .feature-box p {
+            color: #a9a9a9;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .pros-cons-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .pros-box,
+        .cons-box {
+            background-color: #12191f;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #283038;
+        }
+
+        .pros-box h3 {
+            color: #5ecb77;
+            margin-bottom: 20px;
+        }
+
+        .cons-box h3 {
+            color: #e36b6b;
+            margin-bottom: 20px;
+        }
+
+        .pros-box li,
+        .cons-box li {
+            margin: 15px 0;
+            color: #c7c7c7;
+        }
+
+        .view-360 {
+            background-color: #12191f;
+            border: 1px solid #283038;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .view-360 img {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .rotate-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 25px;
+            background-color: #c9a227;
+            color: #111111;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .rating-summary {
+            background-color: #12191f;
+            padding: 35px;
+            border-radius: 10px;
+            border: 1px solid #283038;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .overall-rating {
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .overall-rating h1 {
+            font-size: 60px;
+            color: #c9a227;
+        }
+
+        .stars {
+            color: #c9a227;
+            font-size: 25px;
+        }
+
+        .rating-text {
+            color: #a9a9a9;
+        }
+
+        .review-card {
+            background-color: #12191f;
+            border: 1px solid #283038;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .review-name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .review-card p {
+            color: #b9b9b9;
+            line-height: 1.7;
+        }
+
+        .car-details-footer {
+            background-color: #090d10;
+            border-top: 1px solid #283038;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 45px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-brand h2 {
+            font-size: 26px;
+            letter-spacing: 2px;
+            color: white;
+        }
+
+        .footer-brand h2 span {
+            color: #c9a227;
+        }
+
+        .footer-brand p {
+            color: #999999;
+            margin-top: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: #b9b9b9;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #283038;
+        }
+
+        .footer-bottom p {
+            color: #777777;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1000px) {
+            .car-details-main {
+                grid-template-columns: 1fr;
+            }
+
+            .specifications-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .car-name {
+                font-size: 32px;
+            }
+
+            .quick-specs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .specifications-grid,
+            .features-grid,
+            .pros-cons-container {
+                grid-template-columns: 1fr;
+            }
+
+            .rating-summary,
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .car-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <div class="container navbar-inner">
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo">
+            VELO<span>CIA</span>
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="nav-links">
+
+            <!-- HOME -->
+
+            <a href="index.html">Home</a>
+
+
+            <!-- EXPLORE CARS DROPDOWN -->
+
+            <div class="dropdown">
+
+                <a href="cars.html" class="dropdown-title">
+                    Explore Cars <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="cars.html">
+                        All Cars
+                    </a>
+
+                    <a href="brands.html">
+                        Brands
+                    </a>
+
+                    <a href="compare.html">
+                        Compare Cars
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- MORE DROPDOWN -->
+
+            <div class="dropdown">
+
+                <a href="#" class="dropdown-title">
+                    More <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="wishlist.html">
+                        Wishlist
+                    </a>
+
+                    <a href="reviews.html">
+                        Reviews
+                    </a>
+
+                    <a href="about.html">
+                        About Us
+                    </a>
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+
+        <!-- TEST DRIVE BUTTON -->
+
+        <a href="test-drive.html"
+           class="btn btn-primary desktop-only">
+
+            Book a Test Drive
+
+        </a>
+
+    </div>
+
+    <!-- hamburger menu button, only shows on mobile (pure CSS, no JS) -->
+    <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
+    <label for="menuCheckbox" class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </label>
+
+  <!-- mobile dropdown menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="cars.html">All Cars</a>
+    <a href="brands.html">Brands</a>
+    <a href="compare.html">Compare Cars</a>
+    <a href="wishlist.html">Wishlist</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="login.html">Login / Sign Up</a>
+  </div>
+</div>
+
+
+
+    <!-- CAR DETAILS -->
+
+    <div class="car-details-container">
+
+        <div class="car-details-main">
+
+            <!-- IMAGES -->
+
+            <div>
+
+                <div class="main-car-image">
+
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
+                        alt="Porsche 911">
+
+                </div>
+
+                <div class="car-gallery">
+
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80"
+                        alt="Porsche 911">
+
+                    <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=600&q=80"
+                        alt="Porsche Sports Car">
+
+                    <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=600&q=80"
+                        alt="Porsche Car">
+
+                    <img src="https://images.unsplash.com/photo-1544829099-d4b47a87b0a6?auto=format&fit=crop&w=600&q=80"
+                        alt="Porsche Rear View">
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div>
+
+                <p class="car-brand">PORSCHE</p>
+
+                <h1 class="car-name">Porsche 911 Carrera</h1>
+
+                <p class="car-price">₹1.99 Crore onwards</p>
+
+                <p class="car-description">
+                    The Porsche 911 Carrera is an iconic sports car known for
+                    its timeless design, precise handling and exciting
+                    high-performance driving experience.
+                </p>
+
+
+                <div class="quick-specs">
+
+                    <div class="quick-spec-box">
+                        <p>Engine</p>
+                        <h4>3.0L Twin-Turbo</h4>
+                    </div>
+
+                    <div class="quick-spec-box">
+                        <p>Power</p>
+                        <h4>385 HP</h4>
+                    </div>
+
+                    <div class="quick-spec-box">
+                        <p>Fuel Type</p>
+                        <h4>Petrol</h4>
+                    </div>
+
+                    <div class="quick-spec-box">
+                        <p>Transmission</p>
+                        <h4>Automatic</h4>
+                    </div>
+
+                    <div class="quick-spec-box">
+                        <p>Top Speed</p>
+                        <h4>293 km/h</h4>
+                    </div>
+
+                    <div class="quick-spec-box">
+                        <p>Seating</p>
+                        <h4>4 Seats</h4>
+                    </div>
+
+                </div>
+
+
+                <div class="details-buttons">
+
+                    <a href="test-drive.html" class="test-drive-btn">
+                        Book a Test Drive
+                    </a>
+
+                    <a href="wishlist.html" class="wishlist-btn">
+                        ♡ Wishlist
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FULL SPECIFICATIONS -->
+
+    <section class="details-section">
+
+        <h2>Full Specifications</h2>
+        <div class="section-line"></div>
+
+        <div class="specifications-grid">
+
+            <div class="spec-card"><h4>ENGINE</h4><p>3.0L Twin-Turbo Flat-6</p></div>
+            <div class="spec-card"><h4>HORSEPOWER</h4><p>385 HP</p></div>
+            <div class="spec-card"><h4>MILEAGE</h4><p>Approx. 9 km/l</p></div>
+            <div class="spec-card"><h4>FUEL TYPE</h4><p>Petrol</p></div>
+            <div class="spec-card"><h4>TRANSMISSION</h4><p>8-Speed Automatic</p></div>
+            <div class="spec-card"><h4>TOP SPEED</h4><p>293 km/h</p></div>
+            <div class="spec-card"><h4>SEATING CAPACITY</h4><p>4 People</p></div>
+            <div class="spec-card"><h4>SAFETY</h4><p>Advanced Safety Systems</p></div>
+            <div class="spec-card"><h4>WHEEL TYPE</h4><p>Alloy Wheels</p></div>
+            <div class="spec-card"><h4>DRIVE TYPE</h4><p>Rear Wheel Drive</p></div>
+            <div class="spec-card"><h4>TORQUE</h4><p>450 Nm</p></div>
+            <div class="spec-card"><h4>BODY TYPE</h4><p>Sports Coupe</p></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COLORS -->
+
+    <section class="details-section">
+
+        <h2>Available Colors</h2>
+        <div class="section-line"></div>
+
+        <div class="color-options">
+
+            <div class="color-box"><div class="color-circle black"></div><p>Black</p></div>
+            <div class="color-box"><div class="color-circle white"></div><p>White</p></div>
+            <div class="color-box"><div class="color-circle red"></div><p>Red</p></div>
+            <div class="color-box"><div class="color-circle yellow"></div><p>Yellow</p></div>
+            <div class="color-box"><div class="color-circle blue"></div><p>Blue</p></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="details-section">
+
+        <h2>Key Features</h2>
+        <div class="section-line"></div>
+
+        <div class="features-grid">
+
+            <div class="feature-box">
+                <h4>🏎️ Iconic Performance</h4>
+                <p>Powerful sports car performance with excellent acceleration.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>🛡️ Advanced Safety</h4>
+                <p>Modern safety and driver assistance technologies.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>📱 Digital Cockpit</h4>
+                <p>Modern displays and advanced infotainment technology.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>🪑 Sports Interior</h4>
+                <p>Premium sports seats designed for comfort and performance.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>🎵 Premium Audio</h4>
+                <p>High-quality entertainment system for an enjoyable drive.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>⚡ Driving Modes</h4>
+                <p>Multiple driving modes for different driving conditions.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROS AND CONS -->
+
+    <section class="details-section">
+
+        <h2>Pros & Cons</h2>
+        <div class="section-line"></div>
+
+        <div class="pros-cons-container">
+
+            <div class="pros-box">
+
+                <h3>✓ Pros</h3>
+
+                <ul>
+                    <li>Iconic sports car design</li>
+                    <li>Excellent handling</li>
+                    <li>Powerful performance</li>
+                    <li>Premium interior</li>
+                    <li>Strong brand value</li>
+                </ul>
+
+            </div>
+
+            <div class="cons-box">
+
+                <h3>✕ Cons</h3>
+
+                <ul>
+                    <li>Very expensive</li>
+                    <li>High maintenance cost</li>
+                    <li>Limited rear-seat space</li>
+                    <li>Lower fuel efficiency</li>
+                    <li>Not suitable for rough roads</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- 360 VIEW -->
+
+    <section class="details-section">
+
+        <h2>360° Car View</h2>
+        <div class="section-line"></div>
+
+        <div class="view-360">
+
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
+                alt="Porsche 911 View">
+
+            <p>Explore the Porsche 911 Carrera from different angles.</p>
+
+            <a href="#" class="rotate-button">↻ Rotate Car</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- RATINGS -->
+
+    <section class="details-section">
+
+        <h2>Ratings & Reviews</h2>
+        <div class="section-line"></div>
+
+        <div class="rating-summary">
+
+            <div class="overall-rating">
+
+                <h1>4.9</h1>
+
+                <div class="stars">★★★★★</div>
+
+                <p>Overall Rating</p>
+
+            </div>
+
+            <div class="rating-text">
+
+                <h3>Iconic Sports Car Experience</h3>
+
+                <p>
+                    The Porsche 911 is appreciated for its performance,
+                    handling, premium design and unforgettable driving experience.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="review-header">
+
+                <div>
+                    <p class="review-name">Rohan Malhotra</p>
+                    <div class="stars">★★★★★</div>
+                </div>
+
+                <p>3 days ago</p>
+
+            </div>
+
+            <p>
+                Incredible handling and performance. It truly feels like
+                one of the best sports cars to drive.
+            </p>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="review-header">
+
+                <div>
+                    <p class="review-name">Karan Singh</p>
+                    <div class="stars">★★★★★</div>
+                </div>
+
+                <p>1 week ago</p>
+
+            </div>
+
+            <p>
+                Beautiful design, amazing performance and a very premium
+                driving experience.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-col footer-brand">
+      <div class="logo">VELO<span>CIA</span></div>
+      <p>The showroom, reimagined online. Compare, shortlist and get ready to drive.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn btn-outline">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#launches">New Launches</a>
+      <a href="#featured">Featured Cars</a>
+      <a href="#brands">Popular Brands</a>
+      <a href="#poll">Poll</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Dealer Login</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <a href="tel:+911234567890">+91 12345 67890</a>
+      <a href="mailto:hello@velocia.example">hello@velocia.example</a>
+      <div class="social-row">
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+        <a href="#">X</a>
+        <a href="#">FB</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 VELOCIA. Built as a student project.</p>
+    <p>Privacy · Terms · Sitemap</p>
+  </div>
+</div>
+</body>
+
+</html>

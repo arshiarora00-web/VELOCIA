@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | VELOCIA</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ABOUT HERO */
+        .about-hero {
+            min-height: 420px;
+            background:
+                linear-gradient(
+                    rgba(5, 10, 14, 0.65),
+                    rgba(5, 10, 14, 0.92)
+                ),
+                url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .about-hero-content {
+            max-width: 800px;
+        }
+
+        .about-hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .about-hero h1 span {
+            color: #c9a227;
+        }
+
+        .about-hero p {
+            color: #d0d0d0;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* COMMON SECTION */
+
+        .about-section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 90px auto;
+        }
+
+        .about-section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .about-section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .about-section-title p {
+            color: #999999;
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 3px;
+            background-color: #c9a227;
+            margin: 15px auto;
+        }
+
+        /* OUR STORY */
+
+        .story-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-image {
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #283038;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .story-content h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .story-content h2 span {
+            color: #c9a227;
+        }
+
+        .story-content p {
+            color: #b9b9b9;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        /* MISSION AND VISION */
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .mission-card {
+            background-color: #12191f;
+            border: 1px solid #283038;
+            padding: 35px;
+            border-radius: 12px;
+        }
+
+        .mission-card h3 {
+            color: #c9a227;
+            font-size: 25px;
+            margin-top: 0;
+        }
+
+        .mission-card p {
+            color: #a9a9a9;
+            line-height: 1.8;
+        }
+
+        /* WHY CHOOSE US */
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .why-card {
+            background-color: #12191f;
+            border: 1px solid #283038;
+            padding: 30px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .why-card:hover {
+            transform: translateY(-7px);
+            border-color: #c9a227;
+        }
+
+        .why-icon {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .why-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .why-card p {
+            color: #999999;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* STATISTICS */
+
+        .stats-section {
+            background-color: #12191f;
+            border-top: 1px solid #283038;
+            border-bottom: 1px solid #283038;
+            padding: 70px 20px;
+        }
+
+        .stats-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-box h2 {
+            color: #c9a227;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .stat-box p {
+            color: #999999;
+            margin: 0;
+        }
+
+        /* CALL TO ACTION */
+
+        .about-cta {
+            width: 90%;
+            max-width: 1100px;
+            margin: 90px auto;
+            background-color: #12191f;
+            border: 1px solid #283038;
+            padding: 60px 30px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .about-cta h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .about-cta p {
+            color: #999999;
+            margin-bottom: 30px;
+        }
+
+        .about-btn {
+            display: inline-block;
+            background-color: #c9a227;
+            color: #111111;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        .about-footer {
+            background-color: #090d10;
+            border-top: 1px solid #283038;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 45px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-brand h2 {
+            color: white;
+            font-size: 26px;
+        }
+
+        .footer-brand span {
+            color: #c9a227;
+        }
+
+        .footer-brand p {
+            color: #999999;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #b9b9b9;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #c9a227;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #283038;
+            padding: 20px;
+            color: #777777;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+            .story-container {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .about-hero h1 {
+                font-size: 38px;
+            }
+
+            .about-hero p {
+                font-size: 16px;
+            }
+
+            .about-section {
+                margin: 60px auto;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+    <div class="container navbar-inner">
+        <!-- LOGO -->
+        <a href="index.html" class="logo">
+            VELO<span>CIA</span>
+        </a>
+
+        <!-- NAVIGATION -->
+        <div class="nav-links">
+            <!-- HOME -->
+            <a href="index.html">Home</a>
+
+            <!-- EXPLORE CARS DROPDOWN -->
+            <div class="dropdown">
+                <a href="cars.html" class="dropdown-title">
+                    Explore Cars <span>▾</span>
+                </a>
+
+                <div class="dropdown-menu">
+                    <a href="cars.html">
+                        All Cars
+                    </a>
+                    <a href="brands.html">
+                        Brands
+                    </a>
+                    <a href="compare.html">
+                        Compare Cars
+                    </a>
+                </div>
+            </div>
+
+            <!-- MORE DROPDOWN (hidden on mobile navbar row, moves into hamburger menu) -->
+            <div class="dropdown mobile-hide">
+                <a href="#" class="dropdown-title">
+                    More <span>▾</span>
+                </a>
+
+                <div class="dropdown-menu">
+                    <a href="wishlist.html">
+                        Wishlist
+                    </a>
+                    <a href="reviews.html">
+                        Reviews
+                    </a>
+                    <a href="about.html">
+                        About Us
+                    </a>
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+
+            <!-- LOGIN (hidden on mobile navbar row, moves into hamburger menu) -->
+            <a href="login.html" class="mobile-hide">
+                Login
+            </a>
+        </div>
+
+        <!-- TEST DRIVE BUTTON -->
+        <a href="test-drive.html"
+           class="btn btn-primary desktop-only">
+            Book a Test Drive
+        </a>
+    </div>
+
+    <!-- hamburger menu button, only shows on mobile (pure CSS, no JS) -->
+    <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
+    <label for="menuCheckbox" class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </label>
+
+  <!-- mobile dropdown menu — only the "More" items + Login live here,
+       since Home and Explore Cars stay visible on the navbar itself -->
+  <div class="mobile-menu">
+    <a href="wishlist.html">Wishlist</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="login.html">Login / Sign Up</a>
+  </div>
+</div>
+
+    <!-- ================= HERO ================= -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1>
+                About <span>VELOCIA</span>
+            </h1>
+
+            <p>
+                Your destination for discovering, comparing and exploring
+                premium cars. We help you take one step closer to finding
+                the perfect drive.
+            </p>
+        </div>
+    </section>
+
+    <!-- ================= OUR STORY ================= -->
+    <section class="about-section">
+        <div class="story-container">
+            <div class="story-image">
+                <img
+                    src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80"
+                    alt="Luxury Sports Car"
+                >
+            </div>
+
+            <div class="story-content">
+                <h2>
+                    Our <span>Story</span>
+                </h2>
+
+                <p>
+                    VELOCIA was created with a simple idea — make the
+                    process of discovering your dream car easier, smarter
+                    and more exciting.
+                </p>
+
+                <p>
+                    From powerful sports cars to luxurious sedans and
+                    practical SUVs, we bring different vehicles together
+                    on one platform where enthusiasts can explore,
+                    compare and discover their favourites.
+                </p>
+
+                <p>
+                    Our goal is to create a modern and engaging car
+                    discovery experience for everyone.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MISSION & VISION ================= -->
+    <section class="about-section">
+        <div class="about-section-title">
+            <h2>Our Purpose</h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <h3>Our Mission</h3>
+
+                <p>
+                    To provide car enthusiasts with an easy and visually
+                    engaging platform where they can discover vehicles,
+                    compare important specifications and explore their
+                    favourite cars.
+
+                </p>
+            </div>
+
+            <div class="mission-card">
+                <h3>Our Vision</h3>
+
+                <p>
+                    To become a trusted destination for people looking
+                    to explore the world of automobiles and discover
+                    the vehicle that perfectly matches their lifestyle.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= WHY CHOOSE US ================= -->
+    <section class="about-section">
+        <div class="about-section-title">
+            <h2>Why Choose VELOCIA?</h2>
+            <div class="gold-line"></div>
+
+            <p>
+                Everything you need to explore and discover your
+                next dream car.
+            </p>
+        </div>
+
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-icon">🚗</div>
+                <h3>Explore Cars</h3>
+                <p>
+                    Discover premium cars with detailed information,
+                    specifications and features.
+                </p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">⚖️</div>
+                <h3>Compare Easily</h3>
+                <p>
+                    Compare different cars and understand which vehicle
+                    suits your preferences.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">⭐</div>
+                <h3>Real Reviews</h3>
+                <p>
+                    Explore ratings and reviews to get better insights
+                    about different vehicles.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">❤️</div>
+                <h3>Save Favourites</h3>
+                <p>
+                    Keep track of your favourite cars using your
+                    personal wishlist.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">📋</div>
+                <h3>Detailed Information</h3>
+                <p>
+                    Access important specifications, features and
+                    performance details in one place.
+                </p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">🏁</div>
+                <h3>Test Drive</h3>
+                <p>
+                    Take the next step towards your dream car by
+                    requesting a test drive.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-box">
+                <h2>6+</h2>
+                <p>Premium Cars</p>
+            </div>
+            <div class="stat-box">
+                <h2>6</h2>
+                <p>Top Brands</p>
+            </div>
+            <div class="stat-box">
+                <h2>100+</h2>
+                <p>Happy Users</p>
+            </div>
+            <div class="stat-box">
+                <h2>50+</h2>
+                <p>Car Reviews</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CALL TO ACTION ================= -->
+
+    <section class="about-cta">
+        <h2>
+            Ready To Find Your Dream Car?
+        </h2>
+
+        <p>
+            Start exploring our collection of premium cars today.
+        </p>
+
+        <a href="cars.html" class="about-btn">
+            Explore Cars
+        </a>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <div class="footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-col footer-brand">
+      <div class="logo">VELO<span>CIA</span></div>
+      <p>The showroom, reimagined online. Compare, shortlist and get ready to drive.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn btn-outline">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#launches">New Launches</a>
+      <a href="#featured">Featured Cars</a>
+      <a href="#brands">Popular Brands</a>
+      <a href="#poll">Poll</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Dealer Login</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <a href="tel:+911234567890">+91 12345 67890</a>
+      <a href="mailto:hello@velocia.example">hello@velocia.example</a>
+      <div class="social-row">
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+        <a href="#">X</a>
+        <a href="#">FB</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 VELOCIA. Built as a student project.</p>
+    <p>Privacy · Terms · Sitemap</p>
+  </div>
+</div>
+</body>
+</html>

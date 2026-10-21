@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Car Brands | VELOCIA</title>
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <style>
+
+        /* =========================
+           BRANDS HERO
+           ========================= */
+
+        .brands-hero {
+
+            min-height: 360px;
+
+            background:
+                linear-gradient(
+                    rgba(5, 10, 14, 0.72),
+                    rgba(5, 10, 14, 0.95)
+                ),
+                url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 40px 20px;
+        }
+
+
+        .brands-hero-content {
+
+            max-width: 800px;
+        }
+
+
+        .brands-hero h1 {
+
+            font-size: 52px;
+
+            margin-bottom: 15px;
+
+            color: white;
+        }
+
+
+        .brands-hero h1 span {
+
+            color: #c9a227;
+        }
+
+
+        .brands-hero p {
+
+            color: #d0d0d0;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           BRANDS SECTION
+           ========================= */
+
+        .brands-section {
+
+            width: 90%;
+            max-width: 1250px;
+
+            margin: 90px auto;
+        }
+
+
+        .section-heading {
+
+            text-align: center;
+
+            margin-bottom: 50px;
+        }
+
+
+        .section-heading h2 {
+
+            font-size: 36px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .section-heading p {
+
+            color: #999999;
+
+            line-height: 1.7;
+        }
+
+
+        .gold-line {
+
+            width: 60px;
+            height: 3px;
+
+            background-color: #c9a227;
+
+            margin: 15px auto;
+        }
+
+
+        /* =========================
+           BRANDS GRID
+           ========================= */
+
+        .brands-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        .brand-card {
+
+            background-color: #12191f;
+
+            border: 1px solid #283038;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            color: white;
+
+            transition: 0.3s;
+        }
+
+
+        .brand-card:hover {
+
+            transform: translateY(-8px);
+
+            border-color: #c9a227;
+        }
+
+
+        .brand-image {
+
+            height: 220px;
+
+            overflow: hidden;
+        }
+
+
+        .brand-image img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.4s;
+        }
+
+
+        .brand-card:hover .brand-image img {
+
+            transform: scale(1.08);
+        }
+
+
+        .brand-info {
+
+            padding: 25px;
+        }
+
+
+        .brand-info h2 {
+
+            margin: 0 0 12px;
+
+            font-size: 25px;
+        }
+
+
+        .brand-info p {
+
+            color: #999999;
+
+            line-height: 1.7;
+
+            margin-bottom: 18px;
+        }
+
+
+        .explore-brand {
+
+            color: #c9a227;
+
+            font-weight: bold;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           BRAND EXPERIENCE SECTION
+           ========================= */
+
+        .brand-experience {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: 0 auto 90px;
+
+            background-color: #12191f;
+
+            border: 1px solid #283038;
+
+            border-radius: 12px;
+
+            padding: 50px 30px;
+
+            text-align: center;
+        }
+
+
+        .brand-experience h2 {
+
+            font-size: 34px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .brand-experience h2 span {
+
+            color: #c9a227;
+        }
+
+
+        .brand-experience p {
+
+            max-width: 750px;
+
+            margin: 0 auto;
+
+            color: #999999;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        .brands-footer {
+
+            background-color: #090d10;
+
+            border-top: 1px solid #283038;
+
+            margin-top: 80px;
+        }
+
+
+        .footer-content {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 45px 0;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+
+        .footer-brand h2 {
+
+            font-size: 26px;
+
+            color: white;
+        }
+
+
+        .footer-brand h2 span {
+
+            color: #c9a227;
+        }
+
+
+        .footer-brand p {
+
+            color: #999999;
+        }
+
+
+        .footer-links {
+
+            display: flex;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .footer-links a {
+
+            color: #b9b9b9;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+
+        .footer-links a:hover {
+
+            color: #c9a227;
+        }
+
+
+        .footer-bottom {
+
+            text-align: center;
+
+            border-top: 1px solid #283038;
+
+            padding: 20px;
+        }
+
+
+        .footer-bottom p {
+
+            color: #777777;
+
+            font-size: 14px;
+
+            margin: 0;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+           ========================= */
+
+        @media (max-width: 900px) {
+
+            .brands-grid {
+
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .brands-hero h1 {
+
+                font-size: 38px;
+            }
+
+
+            .brands-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .footer-content {
+
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+
+            .footer-links {
+
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <div class="navbar">
+
+        <div class="container navbar-inner">
+
+            <a href="index.html" class="logo">
+                VELO<span>CIA</span>
+            </a>
+
+
+            <div class="nav-links">
+
+                <!-- HOME -->
+
+                <a href="index.html">Home</a>
+
+
+                <!-- EXPLORE CARS -->
+
+                <div class="dropdown">
+
+                    <a href="cars.html" class="dropdown-title">
+                        Explore Cars <span>▾</span>
+                    </a>
+
+
+                    <div class="dropdown-menu">
+
+                        <a href="cars.html">
+                            All Cars
+                        </a>
+
+                        <a href="brands.html">
+                            Brands
+                        </a>
+
+                        <a href="compare.html">
+                            Compare Cars
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MORE (hidden on mobile navbar row, moves into hamburger menu) -->
+
+                <div class="dropdown mobile-hide">
+
+                    <a href="#" class="dropdown-title">
+                        More <span>▾</span>
+                    </a>
+
+
+                    <div class="dropdown-menu">
+
+                        <a href="wishlist.html">
+                            Wishlist
+                        </a>
+
+                        <a href="reviews.html">
+                            Reviews
+                        </a>
+
+                        <a href="about.html">
+                            About Us
+                        </a>
+
+                        <a href="contact.html">
+                            Contact Us
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOGIN (hidden on mobile navbar row, moves into hamburger menu) -->
+
+                <a href="login.html" class="mobile-hide">
+                    Login
+                </a>
+
+            </div>
+
+
+            <!-- TEST DRIVE -->
+
+            <a href="test-drive.html" class="btn btn-primary desktop-only">
+                Book a Test Drive
+            </a>
+
+        </div>
+
+    <!-- hamburger menu button, only shows on mobile (pure CSS, no JS) -->
+    <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
+    <label for="menuCheckbox" class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </label>
+
+  <!-- mobile dropdown menu — only the "More" items + Login live here,
+       since Home and Explore Cars stay visible on the navbar itself -->
+  <div class="mobile-menu">
+    <a href="wishlist.html">Wishlist</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="login.html">Login / Sign Up</a>
+  </div>
+</div>
+
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="brands-hero">
+
+        <div class="brands-hero-content">
+
+            <h1>
+                Explore <span>Top Brands</span>
+            </h1>
+
+            <p>
+                Discover some of the world's most iconic automotive brands
+                and learn what makes each of them unique.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= BRANDS ================= -->
+
+    <section class="brands-section">
+
+        <div class="section-heading">
+
+            <h2>Featured Car Brands</h2>
+
+            <div class="gold-line"></div>
+
+            <p>
+                From luxury and performance to innovation and reliability,
+                explore the brands shaping the automotive world.
+            </p>
+
+        </div>
+
+
+        <div class="brands-grid">
+
+
+            <!-- BMW -->
+
+            <div class="brand-card">
+
+                <div class="brand-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80"
+                        alt="BMW Car">
+
+                </div>
+
+
+                <div class="brand-info">
+
+                    <h2>BMW</h2>
+
+                    <p>
+                        A brand known for combining powerful performance,
+                        premium luxury and iconic German engineering.
+                    </p>
+
+                    <span class="explore-brand">
+                        Premium German Performance
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MERCEDES -->
+
+            <div class="brand-card">
+
+                <div class="brand-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80"
+                        alt="Mercedes-Benz Car">
+
+                </div>
+
+
+                <div class="brand-info">
+
+                    <h2>Mercedes-Benz</h2>
+
+                    <p>
+                        Famous for elegant design, luxurious interiors,
+                        advanced technology and refined driving comfort.
+                    </p>
+
+                    <span class="explore-brand">
+                        Luxury & Innovation
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AUDI -->
+
+            <div class="brand-card">
+
+                <div class="brand-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1000&q=80"
+                        alt="Audi Car">
+
+                </div>
+
+
+                <div class="brand-info">
+
+                    <h2>Audi</h2>
+
+                    <p>
+                        Known for modern technology, distinctive design
+                        and a perfect balance between luxury and sportiness.
+                    </p>
+
+                    <span class="explore-brand">
+                        Technology & Sportiness
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PORSCHE -->
+
+            <div class="brand-card">
+
+                <div class="brand-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80"
+                        alt="Porsche Car">
+
+                </div>
+
+
+                <div class="brand-info">
+
+                    <h2>Porsche</h2>
+
+                    <p>
+                        A legendary name in the world of sports cars,
+                        built for exceptional performance and driving passion.
+                    </p>
+
+                    <span class="explore-brand">
+                        Legendary Sports Cars
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TESLA -->
+
+            <div class="brand-card">
+
+                <div class="brand-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1000&q=80"
+                        alt="Tesla Car">
+
+                </div>
+
+
+                <div class="brand-info">
+
+                    <h2>Tesla</h2>
+
+                    <p>
+                        An innovative electric vehicle brand focused on
+                        advanced technology and the future of mobility.
+                    </p>
+
+                    <span class="explore-brand">
+                        Future of Electric Driving
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TOYOTA -->
+
+            <div class="brand-card">
+
+                <div class="brand-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1000&q=80"
+                        alt="Toyota Car">
+
+                </div>
+
+
+                <div class="brand-info">
+
+                    <h2>Toyota</h2>
+
+                    <p>
+                        Globally recognised for reliable vehicles,
+                        practical design and versatile performance.
+                    </p>
+
+                    <span class="explore-brand">
+                        Reliability & Adventure
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= BRAND EXPERIENCE ================= -->
+
+    <section class="brand-experience">
+
+        <h2>
+            Every Brand Has Its <span>Own Story</span>
+        </h2>
+
+        <p>
+            From high-performance sports cars and luxurious sedans to
+            innovative electric vehicles and powerful SUVs, every automotive
+            brand brings its own personality and driving experience.
+            Explore VELOCIA to discover the cars that match your style.
+        </p>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+    <div class="footer" id="contact">
+    <div class="container footer-grid">
+    <div class="footer-col footer-brand">
+      <div class="logo">VELO<span>CIA</span></div>
+      <p>The showroom, reimagined online. Compare, shortlist and get ready to drive.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn btn-outline">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#launches">New Launches</a>
+      <a href="#featured">Featured Cars</a>
+      <a href="#brands">Popular Brands</a>
+      <a href="#poll">Poll</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Dealer Login</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <a href="tel:+911234567890">+91 12345 67890</a>
+      <a href="mailto:hello@velocia.example">hello@velocia.example</a>
+      <div class="social-row">
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+        <a href="#">X</a>
+        <a href="#">FB</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 VELOCIA. Built as a student project.</p>
+    <p>Privacy · Terms · Sitemap</p>
+  </div>
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>All Cars | VELOCIA</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+    /* ALL CARS PAGE */
+
+    .cars-page-hero {
+        min-height: 330px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 80px 20px;
+
+        background: linear-gradient(
+            rgba(10, 10, 10, 0.65),
+            rgba(10, 10, 10, 0.85)
+        ),
+        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80");
+
+        background-size: cover;
+        background-position: center;
+    }
+
+
+    .cars-page-hero-content {
+        max-width: 700px;
+    }
+
+
+    .cars-page-hero-content > p:first-child {
+        color: #c9a227;
+        letter-spacing: 3px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+
+    .cars-page-hero-content h1 {
+        color: white;
+        font-size: 48px;
+        margin: 15px 0;
+    }
+
+
+    .cars-page-hero-content h1 span {
+        color: #c9a227;
+    }
+
+
+    .cars-page-hero-content > p:last-child {
+        color: #dddddd;
+        line-height: 1.7;
+        font-size: 16px;
+    }
+
+
+    /* ALL CARS SECTION */
+
+    .all-cars-section {
+        padding: 80px 7%;
+    }
+
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+
+    .all-cars-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+    }
+
+
+    /* CAR CARD */
+
+    .all-car-card {
+        overflow: hidden;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: 0.3s;
+    }
+
+
+    .all-car-card:hover {
+        transform: translateY(-8px);
+    }
+
+
+    .all-car-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+    }
+
+
+    .all-car-info {
+        padding: 20px;
+    }
+
+
+    .car-company {
+        color: #c9a227;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+
+    .all-car-info h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+
+    .all-car-price {
+        font-size: 17px;
+        font-weight: bold;
+        margin-bottom: 18px;
+    }
+
+
+    /* CAR SPECS */
+
+    .mini-specs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+
+    .mini-specs span {
+        font-size: 12px;
+        padding: 6px 9px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 4px;
+    }
+
+
+    /* BUTTONS */
+
+    .all-car-buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+
+    .all-car-buttons a:first-child {
+        flex: 1;
+        text-align: center;
+        padding: 11px;
+        background-color: #c9a227;
+        color: #111111;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+
+
+    .heart-button {
+        padding: 8px 13px;
+        border: 1px solid #c9a227;
+        color: #c9a227;
+        text-decoration: none;
+        font-size: 20px;
+        border-radius: 4px;
+    }
+
+
+    /* RESPONSIVE (car grid only — the navbar/hamburger responsive
+       rules already live in style.css, shared by every page) */
+
+    @media (max-width: 1100px) {
+
+        .all-cars-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+        .all-cars-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+    }
+
+
+    @media (max-width: 550px) {
+
+        .all-cars-grid {
+            grid-template-columns: 1fr;
+        }
+
+
+        .cars-page-hero-content h1 {
+            font-size: 32px;
+        }
+
+    }
+
+</style>
+</head>
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <div class="container navbar-inner">
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo">
+            VELO<span>CIA</span>
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="nav-links">
+
+            <!-- HOME -->
+
+            <a href="index.html">Home</a>
+
+
+            <!-- EXPLORE CARS DROPDOWN -->
+
+            <div class="dropdown">
+
+                <a href="cars.html" class="dropdown-title">
+                    Explore Cars <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="cars.html">
+                        All Cars
+                    </a>
+
+                    <a href="brands.html">
+                        Brands
+                    </a>
+
+                    <a href="compare.html">
+                        Compare Cars
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- MORE DROPDOWN (hidden on mobile navbar row, moves into hamburger menu) -->
+
+            <div class="dropdown mobile-hide">
+
+                <a href="#" class="dropdown-title">
+                    More <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="wishlist.html">
+                        Wishlist
+                    </a>
+
+                    <a href="reviews.html">
+                        Reviews
+                    </a>
+
+                    <a href="about.html">
+                        About Us
+                    </a>
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGIN (hidden on mobile navbar row, moves into hamburger menu) -->
+
+            <a href="login.html" class="mobile-hide">
+                Login
+            </a>
+
+        </div>
+
+
+        <!-- TEST DRIVE BUTTON -->
+
+        <a href="test-drive.html"
+           class="btn btn-primary desktop-only">
+
+            Book a Test Drive
+
+        </a>
+
+    </div>
+
+    <!-- hamburger menu button, only shows on mobile (pure CSS, no JS) -->
+    <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
+    <label for="menuCheckbox" class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </label>
+
+  <!-- mobile dropdown menu — only the "More" items + Login live here,
+       since Home and Explore Cars stay visible on the navbar itself -->
+  <div class="mobile-menu">
+    <a href="wishlist.html">Wishlist</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="login.html">Login / Sign Up</a>
+  </div>
+</div>
+
+
+
+
+    <!-- ================= PAGE HERO ================= -->
+
+    <section class="cars-page-hero">
+
+        <div class="cars-page-hero-content">
+
+            <p>EXPLORE OUR COLLECTION</p>
+
+            <h1>Find Your Perfect <span>Drive</span></h1>
+
+            <p>
+                Explore cars from leading brands and find the
+                perfect car for your lifestyle.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CAR COLLECTION ================= -->
+
+    <section class="all-cars-section">
+
+        <div class="section-title">
+
+            <h2>Explore All Cars</h2>
+
+            <p>
+                Discover premium cars from India's and the world's
+                leading automobile brands.
+            </p>
+
+        </div>
+
+
+
+        <!-- ================= CAR GRID ================= -->
+
+        <div class="all-cars-grid">
+
+
+            <!-- CAR 1 -->
+
+            <div class="all-car-card">
+
+                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=900&q=80"
+                     alt="BMW M4 Competition">
+
+                <div class="all-car-info">
+
+                    <p class="car-company">BMW</p>
+
+                    <h3>BMW M4</h3>
+
+                    <p class="all-car-price">₹1.53 Crore</p>
+
+
+                    <div class="mini-specs">
+
+                        <span>Petrol</span>
+
+                        <span>Automatic</span>
+
+                        <span>510 HP</span>
+
+                    </div>
+
+
+                    <div class="all-car-buttons">
+
+                        <a href="car-details.html">
+                            View Details
+                        </a>
+
+                        <a href="wishlist.html" class="heart-button">
+                            ♡
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CAR 2 -->
+
+            <div class="all-car-card">
+
+                <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=80"
+                     alt="Mercedes-Benz C-Class">
+
+                <div class="all-car-info">
+
+                    <p class="car-company">MERCEDES-BENZ</p>
+
+                    <h3>Mercedes-Benz</h3>
+
+                    <p class="all-car-price">₹59.40 Lakh</p>
+
+
+                    <div class="mini-specs">
+
+                        <span>Petrol</span>
+
+                        <span>Automatic</span>
+
+                        <span>204 HP</span>
+
+                    </div>
+
+
+                    <div class="all-car-buttons">
+
+                        <a href="mercedes-c-class.html">
+                            View Details
+                        </a>
+
+                        <a href="wishlist.html" class="heart-button">
+                            ♡
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CAR 3 -->
+
+            <div class="all-car-card">
+
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80"
+                     alt="Porsche 911">
+
+                <div class="all-car-info">
+
+                    <p class="car-company">PORSCHE</p>
+
+                    <h3>Porsche 911</h3>
+
+                    <p class="all-car-price">₹1.99 Crore</p>
+
+
+                    <div class="mini-specs">
+
+                        <span>Petrol</span>
+
+                        <span>Automatic</span>
+
+                        <span>385 HP</span>
+
+                    </div>
+
+
+                    <div class="all-car-buttons">
+
+                        <a href="porsche-911.html">
+                            View Details
+                        </a>
+
+                        <a href="wishlist.html" class="heart-button">
+                            ♡
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CAR 4 -->
+
+            <div class="all-car-card">
+
+                <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=900&q=80"
+                     alt="Audi RS7">
+
+                <div class="all-car-info">
+
+                    <p class="car-company">AUDI</p>
+
+                    <h3>Audi RS7 Sportback</h3>
+
+                    <p class="all-car-price">₹2.23 Crore</p>
+
+
+                    <div class="mini-specs">
+
+                        <span>Petrol</span>
+
+                        <span>Automatic</span>
+
+                        <span>630 HP</span>
+
+                    </div>
+
+
+                    <div class="all-car-buttons">
+
+                        <a href="audi-rs7.html">
+                            View Details
+                        </a>
+
+                        <a href="wishlist.html" class="heart-button">
+                            ♡
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CAR 5 -->
+
+            <div class="all-car-card">
+
+                <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=900&q=80"
+                     alt="Tesla Model S">
+
+                <div class="all-car-info">
+
+                    <p class="car-company">TESLA</p>
+
+                    <h3>Tesla Model S</h3>
+
+                    <p class="all-car-price">₹1.50 Crore</p>
+
+
+                    <div class="mini-specs">
+
+                        <span>Electric</span>
+
+                        <span>Automatic</span>
+
+                        <span>670 HP</span>
+
+                    </div>
+
+
+                    <div class="all-car-buttons">
+
+                        <a href="tesla-model-s.html">
+                            View Details
+                        </a>
+
+                        <a href="wishlist.html" class="heart-button">
+                            ♡
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CAR 6 -->
+            <div class="all-car-card">
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=900&q=80"
+                     alt="Mahindra Thar">
+                <div class="all-car-info">
+                    <p class="car-company">MAHINDRA</p>
+                    <h3>Mahindra Thar</h3>
+                    <p class="all-car-price">₹11.50 Lakh</p>
+                    <div class="mini-specs">
+                        <span>Diesel</span>
+                        <span>Manual</span>
+                        <span>150 HP</span>
+                    </div>
+                    <div class="all-car-buttons">
+                        <a href="mahindra-thar.html">
+                            View Details
+                        </a>
+                        <a href="wishlist.html" class="heart-button">
+                            ♡
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAR 7 -->
+            <div class="all-car-card">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=900&q=80"
+                     alt="Hyundai Creta">
+                <div class="all-car-info">
+                    <p class="car-company">HYUNDAI</p>
+                    <h3>Hyundai Creta</h3>
+                    <p class="all-car-price">₹11.11 Lakh</p>
+                    <div class="mini-specs">
+                        <span>Petrol</span>
+                        <span>Automatic</span>
+                        <span>160 HP</span>
+                    </div>
+                    <div class="all-car-buttons">
+                        <a href="hyundai-creta.html">
+                            View Details
+                        </a>
+                        <a href="wishlist.html" class="heart-button">
+                            ♡
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAR 8 -->
+            <div class="all-car-card">
+                <img src="https://images.unsplash.com/photo-1494905998402-395d579af36f?auto=format&fit=crop&w=900&q=80"
+                     alt="Toyota Fortuner">
+                <div class="all-car-info">
+                    <p class="car-company">TOYOTA</p>
+                    <h3>Toyota Fortuner</h3>
+                    <p class="all-car-price">₹35.00 Lakh</p>
+                    <div class="mini-specs">
+                        <span>Diesel</span>
+                        <span>Automatic</span>
+                        <span>204 HP</span>
+                    </div>
+                    <div class="all-car-buttons">
+                        <a href="toyota-fortuner.html">
+                            View Details
+                        </a>
+                        <a href="wishlist.html" class="heart-button">
+                            ♡
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <div class="footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-col footer-brand">
+      <div class="logo">VELO<span>CIA</span></div>
+      <p>The showroom, reimagined online. Compare, shortlist and get ready to drive.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn btn-outline">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#launches">New Launches</a>
+      <a href="#featured">Featured Cars</a>
+      <a href="#brands">Popular Brands</a>
+      <a href="#poll">Poll</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Dealer Login</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <a href="tel:+911234567890">+91 12345 67890</a>
+      <a href="mailto:hello@velocia.example">hello@velocia.example</a>
+      <div class="social-row">
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+        <a href="#">X</a>
+        <a href="#">FB</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 VELOCIA. Built as a student project.</p>
+    <p>Privacy · Terms · Sitemap</p>
+  </div>
+</div>
+</body>
+</html>

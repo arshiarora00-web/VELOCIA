@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - VELOCIA</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= TOP BAR ================= -->
+
+    <div class="auth-topbar">
+
+        <a href="index.html" class="logo">
+            VELO<span>CIA</span>
+        </a>
+
+
+        <a href="index.html" class="back-home">
+            ← Back to Home
+        </a>
+
+    </div>
+
+
+
+    <!-- ================= MAIN PAGE ================= -->
+
+    <div class="auth-page">
+
+
+        <!-- ================= LEFT SIDE IMAGE ================= -->
+
+        <div class="auth-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80"
+                alt="Luxury Car"
+            >
+
+
+            <div class="image-overlay">
+
+                <h1>Your Dream Car Is One Click Away.</h1>
+
+                <p>
+                    Explore premium cars, compare your favourites
+                    and find the perfect ride with VELOCIA.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= RIGHT SIDE FORMS ================= -->
+
+        <div class="auth-form-section">
+
+
+            <!-- ================= LOGIN FORM ================= -->
+
+            <div class="form-box" id="login">
+
+                <h2>Welcome Back</h2>
+
+                <p class="form-subtitle">
+                    Log in to continue your journey.
+                </p>
+
+
+                <form id="loginForm">
+
+
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+
+
+                    <div class="remember-row">
+
+                        <label class="checkbox-label">
+
+                            <input type="checkbox">
+
+                            Remember me
+
+                        </label>
+
+
+                        <a href="#">
+                            Forgot Password?
+                        </a>
+
+                    </div>
+
+
+
+                    <button type="submit" class="auth-button">
+
+                        LOG IN
+
+                    </button>
+
+                </form>
+
+
+
+                <p class="switch-form">
+
+                    Don't have an account?
+
+                    <a href="#signup">
+                        Sign Up
+                    </a>
+
+                </p>
+
+            </div>
+
+
+
+            <!-- ================= SIGNUP FORM ================= -->
+
+            <div class="form-box signup-box" id="signup">
+
+                <h2>Create Account</h2>
+
+                <p class="form-subtitle">
+
+                    Join VELOCIA and find your dream car.
+
+                </p>
+
+
+                <form id="signupForm">
+
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        id="signupName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+
+
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        id="signupEmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="tel"
+                        id="signupPhone"
+                        placeholder="Enter your phone number"
+                        required
+                    >
+
+
+
+                    <label>Create Password</label>
+
+                    <input
+                        type="password"
+                        id="signupPassword"
+                        placeholder="Minimum 6 characters"
+                        minlength="6"
+                        required
+                    >
+
+
+
+                    <button type="submit" class="auth-button">
+
+                        CREATE ACCOUNT
+
+                    </button>
+
+                </form>
+
+
+                <p class="switch-form">
+
+                    Already have an account?
+
+                    <a href="#login">
+                        Log In
+                    </a>
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+
+        /* =========================================
+           SIGNUP
+           ========================================= */
+
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            let name = document.getElementById("signupName").value;
+
+            let email = document.getElementById("signupEmail").value;
+
+            let phone = document.getElementById("signupPhone").value;
+
+            let password = document.getElementById("signupPassword").value;
+
+
+            /* Get existing users */
+
+            let users = JSON.parse(localStorage.getItem("velociaUsers")) || [];
+
+
+            /* Check if email already exists */
+
+            let userExists = false;
+
+
+            for (let i = 0; i < users.length; i++) {
+
+                if (users[i].email === email) {
+
+                    userExists = true;
+
+                }
+
+            }
+
+
+            if (userExists) {
+
+                alert("An account with this email already exists!");
+
+                return;
+
+            }
+
+
+            /* Create new user */
+
+            let newUser = {
+
+                name: name,
+
+                email: email,
+
+                phone: phone,
+
+                password: password,
+
+                joinedDate: new Date().toLocaleDateString()
+
+            };
+
+
+            /* Save user */
+
+            users.push(newUser);
+
+
+            localStorage.setItem(
+                "velociaUsers",
+                JSON.stringify(users)
+            );
+
+
+            /* Current logged in user */
+
+            alert("Account created successfully! Please log in to continue.");
+
+            document.getElementById("signupForm").reset();
+
+            window.location.hash = "login";
+
+        });
+
+
+
+        /* LOGIN */
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            let email = document.getElementById("loginEmail").value;
+
+            let password = document.getElementById("loginPassword").value;
+
+
+            /* ADMIN LOGIN */
+
+            if (
+                email === "admin@velocia.com" &&
+                password === "velocia@123"
+            ) {
+
+                window.location.href = "admin-dashboard.html";
+
+                return;
+
+            }
+
+
+            /* NORMAL USER LOGIN */
+
+            let users = JSON.parse(
+                localStorage.getItem("velociaUsers")
+            ) || [];
+
+
+            let foundUser = null;
+
+
+            for (let i = 0; i < users.length; i++) {
+
+                if (
+                    users[i].email === email &&
+                    users[i].password === password
+                ) {
+
+                    foundUser = users[i];
+
+                }
+
+            }
+
+
+            if (foundUser !== null) {
+
+                localStorage.setItem(
+                    "currentUser",
+                    JSON.stringify(foundUser)
+                );
+
+
+                alert("Login successful!");
+
+
+                window.location.href = "index.html";
+
+            }
+
+            else {
+
+                alert("Invalid email or password!");
+
+            }
+
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

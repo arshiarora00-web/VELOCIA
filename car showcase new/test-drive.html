@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book a Test Drive | VELOCIA</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+    /* TEST DRIVE PAGE */
+
+    .td-hero {
+        min-height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 80px 20px;
+
+        background: linear-gradient(
+            rgba(10, 10, 10, 0.65),
+            rgba(10, 10, 10, 0.85)
+        ),
+        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80");
+
+        background-size: cover;
+        background-position: center;
+    }
+
+    .td-hero-content {
+        max-width: 700px;
+    }
+
+    .td-hero-content > p:first-child {
+        color: var(--champagne);
+        letter-spacing: 3px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .td-hero-content h1 {
+        color: white;
+        font-size: 44px;
+        margin: 15px 0;
+    }
+
+    .td-hero-content h1 span {
+        color: var(--champagne);
+    }
+
+    .td-hero-content > p:last-child {
+        color: #dddddd;
+        line-height: 1.7;
+        font-size: 16px;
+    }
+
+    /* FORM SECTION */
+
+    .td-section {
+        padding: 80px 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .td-card {
+        width: 100%;
+        max-width: 620px;
+        background-color: var(--carbon);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        padding: 40px;
+    }
+
+    .td-card h2 {
+        font-size: 26px;
+        margin-bottom: 8px;
+    }
+
+    .td-card > p {
+        color: var(--titanium);
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    .td-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .td-note {
+        margin-top: 20px;
+        font-size: 13px;
+        color: var(--titanium);
+        line-height: 1.6;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 700px) {
+
+        .td-hero-content h1 {
+            font-size: 30px;
+        }
+
+        .td-card {
+            padding: 26px;
+        }
+
+        .td-row {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <div class="container navbar-inner">
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo">
+            VELO<span>CIA</span>
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="nav-links">
+
+            <!-- HOME -->
+
+            <a href="index.html">Home</a>
+
+
+            <!-- EXPLORE CARS DROPDOWN -->
+
+            <div class="dropdown">
+
+                <a href="cars.html" class="dropdown-title">
+                    Explore Cars <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="cars.html">
+                        All Cars
+                    </a>
+
+                    <a href="brands.html">
+                        Brands
+                    </a>
+
+                    <a href="compare.html">
+                        Compare Cars
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- MORE DROPDOWN -->
+
+            <div class="dropdown">
+
+                <a href="#" class="dropdown-title">
+                    More <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="wishlist.html">
+                        Wishlist
+                    </a>
+
+                    <a href="reviews.html">
+                        Reviews
+                    </a>
+
+                    <a href="about.html">
+                        About Us
+                    </a>
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+
+        <!-- TEST DRIVE BUTTON -->
+
+        <a href="test-drive.html"
+           class="btn btn-primary desktop-only">
+
+            Book a Test Drive
+
+        </a>
+
+    </div>
+
+    <!-- hamburger menu button, only shows on mobile (pure CSS, no JS) -->
+    <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
+    <label for="menuCheckbox" class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </label>
+
+  <!-- mobile dropdown menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="cars.html">All Cars</a>
+    <a href="brands.html">Brands</a>
+    <a href="compare.html">Compare Cars</a>
+    <a href="wishlist.html">Wishlist</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="login.html">Login / Sign Up</a>
+  </div>
+</div>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="td-hero">
+
+        <div class="td-hero-content">
+
+            <p>BOOK NOW</p>
+
+            <h1>Book a <span>Test Drive</span></h1>
+
+            <p>
+                Tell us your preferred car and time — our nearest showroom
+                will confirm your slot within 24 hours.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FORM ================= -->
+
+    <section class="td-section">
+
+        <div class="td-card">
+
+            <h2>Test Drive Details</h2>
+            <p>All fields marked are required to confirm your booking.</p>
+
+            <form>
+
+                <div class="td-row">
+
+                    <div class="form-group">
+                        <label for="tdName">Full name</label>
+                        <input type="text" id="tdName" placeholder="Your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tdPhone">Phone number</label>
+                        <input type="tel" id="tdPhone" placeholder="+91 12345 67890">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="tdEmail">Email address</label>
+                    <input type="email" id="tdEmail" placeholder="you@example.com">
+                </div>
+
+                <div class="td-row">
+
+                    <div class="form-group">
+                        <label for="tdCar">Preferred car</label>
+                        <select id="tdCar">
+                            <option value="">Select a car</option>
+                            <option>Audi RS7</option>
+                            <option>Hyundai Creta</option>
+                            <option>Mahindra Thar</option>
+                            <option>Mercedes C-Class</option>
+                            <option>Porsche 911</option>
+                            <option>Tesla Model S</option>
+                            <option>Toyota Fortuner</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tdCity">Nearest showroom</label>
+                        <select id="tdCity">
+                            <option value="">Select a city</option>
+                            <option>Delhi NCR</option>
+                            <option>Mumbai</option>
+                            <option>Bengaluru</option>
+                            <option>Chandigarh</option>
+                            <option>Pune</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="td-row">
+
+                    <div class="form-group">
+                        <label for="tdDate">Preferred date</label>
+                        <input type="date" id="tdDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tdTime">Preferred time</label>
+                        <input type="time" id="tdTime">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="tdMessage">Anything else we should know?</label>
+                    <input type="text" id="tdMessage" placeholder="Optional message">
+                </div>
+
+                <button type="submit" class="btn btn-primary auth-submit">
+                    Confirm Test Drive
+                </button>
+
+                <p class="td-note">
+                    This is a static demo form — it doesn't send data anywhere yet.
+                    Hooking it up to a real booking system needs a backend or JavaScript.
+                </p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <div class="footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-col footer-brand">
+      <div class="logo">VELO<span>CIA</span></div>
+      <p>The showroom, reimagined online. Compare, shortlist and get ready to drive.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn btn-outline">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#launches">New Launches</a>
+      <a href="#featured">Featured Cars</a>
+      <a href="#brands">Popular Brands</a>
+      <a href="#poll">Poll</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Dealer Login</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <a href="tel:+911234567890">+91 12345 67890</a>
+      <a href="mailto:hello@velocia.example">hello@velocia.example</a>
+      <div class="social-row">
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+        <a href="#">X</a>
+        <a href="#">FB</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 VELOCIA. Built as a student project.</p>
+    <p>Privacy · Terms · Sitemap</p>
+  </div>
+</div>
+
+</body>
+</html>

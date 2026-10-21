@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Cars | VELOCIA Admin</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* ================= BODY ================= */
+
+        body {
+            margin: 0;
+            background-color: #0b1014;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* ================= ADMIN LAYOUT ================= */
+
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            background-color: #090d10;
+            border-right: 1px solid #283038;
+
+            padding: 30px 20px;
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+
+        .admin-logo {
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+        }
+
+
+        .admin-logo span {
+            color: #c9a227;
+        }
+
+
+        .admin-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+            z-index: 10000;
+        }
+
+
+        .admin-menu a {
+            color: #b9b9b9;
+            text-decoration: none;
+            padding: 14px 15px;
+            border-radius: 7px;
+            transition: 0.3s;
+
+            position: relative;
+            z-index: 10001;
+            cursor: pointer;
+        }
+
+
+        .admin-menu a:hover,
+        .admin-menu .active {
+            background-color: #c9a227;
+            color: #111111;
+        }
+
+
+        .back-home {
+            display: block;
+
+            margin-top: 30px;
+
+            padding: 12px;
+
+            text-align: center;
+
+            border: 1px solid #c9a227;
+
+            border-radius: 6px;
+
+            color: #c9a227;
+
+            text-decoration: none;
+
+            box-sizing: border-box;
+
+            flex-shrink: 0;
+
+            transition: 0.3s;
+        }
+
+
+        .back-home:hover {
+            background-color: #c9a227;
+            color: #111111;
+        }
+
+
+        /* ================= MAIN CONTENT ================= */
+
+        .admin-main {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+
+        .page-header h1 {
+            margin: 0 0 10px;
+            font-size: 32px;
+        }
+
+
+        .page-header p {
+            color: #999999;
+            margin: 0;
+        }
+
+
+        .add-car-btn {
+            background-color: #c9a227;
+            color: #111111;
+            padding: 13px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+
+
+        /* ================= SEARCH ================= */
+
+        .search-section {
+            background-color: #12191f;
+            padding: 20px;
+            border: 1px solid #283038;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+
+        .search-section input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            background-color: #0b1014;
+            border: 1px solid #283038;
+            border-radius: 6px;
+            color: white;
+            outline: none;
+        }
+
+
+        /* ================= CAR GRID ================= */
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+
+        .admin-car-card {
+            background-color: #12191f;
+            border: 1px solid #283038;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+
+        .admin-car-card:hover {
+            transform: translateY(-5px);
+            border-color: #c9a227;
+        }
+
+
+        .car-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .car-info {
+            padding: 20px;
+        }
+
+
+        .car-brand {
+            color: #c9a227;
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+
+        .car-info h3 {
+            margin: 8px 0;
+            font-size: 21px;
+        }
+
+
+        .car-price {
+            color: #b9b9b9;
+            margin-bottom: 20px;
+        }
+
+
+        /* ================= ACTION BUTTONS ================= */
+
+        .car-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+
+        .edit-btn,
+        .delete-btn {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+
+        .edit-btn {
+            background-color: #c9a227;
+            color: #111111;
+        }
+
+
+        .delete-btn {
+            border: 1px solid #e36b6b;
+            color: #e36b6b;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1100px) {
+
+            .cars-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+                width: 70px;
+                padding: 25px 10px;
+            }
+
+
+            .admin-logo {
+                font-size: 0;
+            }
+
+
+            .admin-logo span {
+                font-size: 20px;
+            }
+
+
+            .admin-menu a {
+                font-size: 0;
+                padding: 15px 5px;
+                text-align: center;
+            }
+
+
+            .back-home {
+                font-size: 0;
+                padding: 15px 5px;
+            }
+
+
+            .admin-main {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+                padding: 25px;
+            }
+
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+
+            .cars-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="admin-container">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="admin-logo">
+                VELO<span>CIA</span>
+            </div>
+
+
+            <div class="admin-menu">
+
+                <a href="admin-dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="manage-cars.html" class="active">
+                    Manage Cars
+                </a>
+
+                <a href="view-users.html">
+                    View Users
+                </a>
+
+                <a href="manage-reviews.html">
+                    Manage Reviews
+                </a>
+
+                <a href="view-enquiries.html">
+                    View Enquiries
+                </a>
+
+            </div>
+
+
+            <a href="index.html" class="back-home">
+                ← Back to Website
+            </a>
+
+        </aside>
+
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h1>Manage Cars</h1>
+
+                    <p>
+                        Add, edit and manage all cars available on VELOCIA.
+                    </p>
+
+                </div>
+
+
+                <a href="#" class="add-car-btn">
+                    + Add New Car
+                </a>
+
+            </div>
+
+
+
+            <!-- SEARCH -->
+
+            <div class="search-section">
+
+                <input type="text" placeholder="Search cars by name or brand...">
+
+            </div>
+
+
+
+            <!-- ================= CARS GRID ================= -->
+
+            <div class="cars-grid">
+
+
+                <!-- BMW -->
+
+                <div class="admin-car-card">
+
+                    <div class="car-image">
+
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80"
+                            alt="BMW M4 Competition">
+
+                    </div>
+
+                    <div class="car-info">
+
+                        <p class="car-brand">BMW</p>
+
+                        <h3>BMW M4 Competition</h3>
+
+                        <p class="car-price">₹1.53 Crore</p>
+
+                        <div class="car-actions">
+
+                            <a href="#" class="edit-btn">
+                                Edit
+                            </a>
+
+                            <a href="#" class="delete-btn">
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MERCEDES -->
+
+                <div class="admin-car-card">
+
+                    <div class="car-image">
+
+                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80"
+                            alt="Mercedes Benz">
+
+                    </div>
+
+                    <div class="car-info">
+
+                        <p class="car-brand">MERCEDES-BENZ</p>
+
+                        <h3>Mercedes-Benz AMG GT</h3>
+
+                        <p class="car-price">₹3.30 Crore</p>
+
+                        <div class="car-actions">
+
+                            <a href="#" class="edit-btn">
+                                Edit
+                            </a>
+
+                            <a href="#" class="delete-btn">
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MAHINDRA THAR -->
+
+                <div class="admin-car-card">
+
+                    <div class="car-image">
+
+                        <img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=800&q=80"
+                            alt="Mahindra Thar">
+
+                    </div>
+
+                    <div class="car-info">
+
+                        <p class="car-brand">MAHINDRA</p>
+
+                        <h3>Mahindra Thar</h3>
+
+                        <p class="car-price">₹11.50 Lakh onwards</p>
+
+                        <div class="car-actions">
+
+                            <a href="#" class="edit-btn">
+                                Edit
+                            </a>
+
+                            <a href="#" class="delete-btn">
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- HYUNDAI CRETA -->
+
+                <div class="admin-car-card">
+
+                    <div class="car-image">
+
+                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80"
+                            alt="Hyundai Creta">
+
+                    </div>
+
+                    <div class="car-info">
+
+                        <p class="car-brand">HYUNDAI</p>
+
+                        <h3>Hyundai Creta</h3>
+
+                        <p class="car-price">₹11.11 Lakh onwards</p>
+
+                        <div class="car-actions">
+
+                            <a href="#" class="edit-btn">
+                                Edit
+                            </a>
+
+                            <a href="#" class="delete-btn">
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TOYOTA FORTUNER -->
+
+                <div class="admin-car-card">
+
+                    <div class="car-image">
+
+                        <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=800&q=80"
+                            alt="Toyota Fortuner">
+
+                    </div>
+
+                    <div class="car-info">
+
+                        <p class="car-brand">TOYOTA</p>
+
+                        <h3>Toyota Fortuner</h3>
+
+                        <p class="car-price">₹34.76 Lakh onwards</p>
+
+                        <div class="car-actions">
+
+                            <a href="#" class="edit-btn">
+                                Edit
+                            </a>
+
+                            <a href="#" class="delete-btn">
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- AUDI RS7 -->
+
+                <div class="admin-car-card">
+
+                    <div class="car-image">
+
+                        <img src="https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=800&q=80"
+                            alt="Audi RS7">
+
+                    </div>
+
+                    <div class="car-info">
+
+                        <p class="car-brand">AUDI</p>
+
+                        <h3>Audi RS7</h3>
+
+                        <p class="car-price">₹2.23 Crore</p>
+
+                        <div class="car-actions">
+
+                            <a href="#" class="edit-btn">
+                                Edit
+                            </a>
+
+                            <a href="#" class="delete-btn">
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PORSCHE 911 -->
+
+                <div class="admin-car-card">
+
+                    <div class="car-image">
+
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"
+                            alt="Porsche 911">
+
+                    </div>
+
+                    <div class="car-info">
+
+                        <p class="car-brand">PORSCHE</p>
+
+                        <h3>Porsche 911</h3>
+
+                        <p class="car-price">₹1.99 Crore onwards</p>
+
+                        <div class="car-actions">
+
+                            <a href="#" class="edit-btn">
+                                Edit
+                            </a>
+
+                            <a href="#" class="delete-btn">
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TESLA MODEL S -->
+
+                <div class="admin-car-card">
+
+                    <div class="car-image">
+
+                        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=800&q=80"
+                            alt="Tesla Model S">
+
+                    </div>
+
+                    <div class="car-info">
+
+                        <p class="car-brand">TESLA</p>
+
+                        <h3>Tesla Model S</h3>
+
+                        <p class="car-price">Premium Electric Sedan</p>
+
+                        <div class="car-actions">
+
+                            <a href="#" class="edit-btn">
+                                Edit
+                            </a>
+
+                            <a href="#" class="delete-btn">
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+</body>
+
+</html>

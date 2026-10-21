@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Car Reviews | VELOCIA</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =========================
+           REVIEWS PAGE
+           ========================= */
+
+        body {
+            background-color: #0b1014;
+            color: white;
+        }
+
+
+        /* =========================
+           HERO SECTION
+           ========================= */
+
+        .reviews-hero {
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(10, 10, 10, 0.70),
+                    rgba(10, 10, 10, 0.88)
+                ),
+                url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .reviews-hero small {
+            color: #c9a227;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+
+        .reviews-hero h1 {
+            font-size: 48px;
+            margin: 15px 0;
+        }
+
+
+        .reviews-hero h1 span {
+            color: #c9a227;
+        }
+
+
+        .reviews-hero-description {
+            max-width: 650px;
+            margin: auto;
+            color: #dddddd;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           MAIN SECTION
+           ========================= */
+
+        .reviews-section {
+            width: 90%;
+            max-width: 1300px;
+            margin: 70px auto;
+        }
+
+
+        /* =========================
+           RATING OVERVIEW
+           ========================= */
+
+        .rating-overview {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 70px;
+        }
+
+
+        .overall-rating-box {
+            background-color: #12191f;
+            border: 1px solid #283038;
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+        }
+
+
+        .overall-rating-box h2 {
+            font-size: 65px;
+            color: #c9a227;
+        }
+
+
+        .overall-rating-box p {
+            color: #aaaaaa;
+            margin-top: 8px;
+        }
+
+
+        .review-stars {
+            color: #c9a227;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+
+        /* =========================
+           RATING BARS
+           ========================= */
+
+        .rating-bars {
+            background-color: #12191f;
+            border: 1px solid #283038;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+
+        .rating-bars h3 {
+            margin-bottom: 25px;
+        }
+
+
+        .rating-row {
+            display: grid;
+            grid-template-columns: 70px 1fr 40px;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+
+        .rating-row span {
+            color: #cccccc;
+        }
+
+
+        .rating-bar-background {
+            height: 8px;
+            background-color: #283038;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+
+        .rating-bar {
+            height: 100%;
+            background-color: #c9a227;
+            border-radius: 10px;
+        }
+
+
+        .bar-five {
+            width: 85%;
+        }
+
+        .bar-four {
+            width: 65%;
+        }
+
+        .bar-three {
+            width: 30%;
+        }
+
+        .bar-two {
+            width: 12%;
+        }
+
+        .bar-one {
+            width: 5%;
+        }
+
+
+        /* =========================
+           WRITE REVIEW SECTION
+           ========================= */
+
+        .write-review-box {
+            background-color: #12191f;
+            border: 1px solid #283038;
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 70px;
+        }
+
+
+        .write-review-box h2 {
+            margin-bottom: 8px;
+        }
+
+
+        .write-review-box > p {
+            color: #aaaaaa;
+            margin-bottom: 30px;
+        }
+
+
+        .review-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .form-group label {
+            margin-bottom: 8px;
+            color: #cccccc;
+            font-size: 14px;
+        }
+
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background-color: #0b1014;
+            border: 1px solid #39434d;
+            color: white;
+            padding: 13px;
+            border-radius: 5px;
+            outline: none;
+            font-family: Arial, sans-serif;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #c9a227;
+        }
+
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+
+        /* =========================
+           STAR RATING UI
+           ========================= */
+
+        .rating-select {
+            display: flex;
+            gap: 8px;
+            font-size: 28px;
+            color: #c9a227;
+        }
+
+
+        .submit-review-btn {
+            margin-top: 25px;
+            padding: 14px 30px;
+            border: none;
+            background-color: #c9a227;
+            color: #111111;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           USER REVIEWS
+           ========================= */
+
+        .reviews-heading {
+            margin-bottom: 30px;
+        }
+
+
+        .reviews-heading h2 {
+            font-size: 32px;
+        }
+
+
+        .reviews-heading h2 span {
+            color: #c9a227;
+        }
+
+
+        .review-card {
+            background-color: #12191f;
+            border: 1px solid #283038;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 25px;
+        }
+
+
+        .review-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+
+        .review-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: #c9a227;
+            color: #111111;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+
+        .review-user h3 {
+            margin-bottom: 5px;
+        }
+
+
+        .review-user p {
+            color: #999999;
+            font-size: 13px;
+        }
+
+
+        .review-date {
+            color: #999999;
+            font-size: 13px;
+        }
+
+
+        .review-car-name {
+            color: #c9a227;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+
+        .review-card > p {
+            color: #b9b9b9;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+           ========================= */
+
+        @media (max-width: 900px) {
+
+            .rating-overview {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .reviews-hero h1 {
+                font-size: 34px;
+            }
+
+
+            .review-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .full-width {
+                grid-column: auto;
+            }
+
+
+            .review-card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+
+            .rating-row {
+                grid-template-columns: 55px 1fr 35px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <div class="container navbar-inner">
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo">
+            VELO<span>CIA</span>
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="nav-links">
+
+            <!-- HOME -->
+
+            <a href="index.html">Home</a>
+
+
+            <!-- EXPLORE CARS DROPDOWN -->
+
+            <div class="dropdown">
+
+                <a href="cars.html" class="dropdown-title">
+                    Explore Cars <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="cars.html">
+                        All Cars
+                    </a>
+
+                    <a href="brands.html">
+                        Brands
+                    </a>
+
+                    <a href="compare.html">
+                        Compare Cars
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- MORE DROPDOWN -->
+
+            <div class="dropdown">
+
+                <a href="#" class="dropdown-title">
+                    More <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="wishlist.html">
+                        Wishlist
+                    </a>
+
+                    <a href="reviews.html">
+                        Reviews
+                    </a>
+
+                    <a href="about.html">
+                        About Us
+                    </a>
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+
+        <!-- TEST DRIVE BUTTON -->
+
+        <a href="test-drive.html"
+           class="btn btn-primary desktop-only">
+
+            Book a Test Drive
+
+        </a>
+
+    </div>
+
+    <!-- hamburger menu button, only shows on mobile (pure CSS, no JS) -->
+    <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
+    <label for="menuCheckbox" class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </label>
+
+  <!-- mobile dropdown menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="cars.html">All Cars</a>
+    <a href="brands.html">Brands</a>
+    <a href="compare.html">Compare Cars</a>
+    <a href="wishlist.html">Wishlist</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="login.html">Login / Sign Up</a>
+  </div>
+</div>
+
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="reviews-hero">
+
+        <div>
+
+            <small>REAL EXPERIENCES</small>
+
+            <h1>
+                Car <span>Reviews</span>
+            </h1>
+
+            <p class="reviews-hero-description">
+                Read reviews from car enthusiasts and share your own
+                experience with your favourite vehicles.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <section class="reviews-section">
+
+
+        <!-- ================= RATING OVERVIEW ================= -->
+
+        <div class="rating-overview">
+
+
+            <div class="overall-rating-box">
+
+                <h2>4.7</h2>
+
+                <div class="review-stars">
+                    ★★★★★
+                </div>
+
+                <p>Based on 248 Reviews</p>
+
+            </div>
+
+
+
+            <div class="rating-bars">
+
+                <h3>Rating Distribution</h3>
+
+
+                <div class="rating-row">
+
+                    <span>5 Stars</span>
+
+                    <div class="rating-bar-background">
+                        <div class="rating-bar bar-five"></div>
+                    </div>
+
+                    <span>85%</span>
+
+                </div>
+
+
+                <div class="rating-row">
+
+                    <span>4 Stars</span>
+
+                    <div class="rating-bar-background">
+                        <div class="rating-bar bar-four"></div>
+                    </div>
+
+                    <span>65%</span>
+
+                </div>
+
+
+                <div class="rating-row">
+
+                    <span>3 Stars</span>
+
+                    <div class="rating-bar-background">
+                        <div class="rating-bar bar-three"></div>
+                    </div>
+
+                    <span>30%</span>
+
+                </div>
+
+
+                <div class="rating-row">
+
+                    <span>2 Stars</span>
+
+                    <div class="rating-bar-background">
+                        <div class="rating-bar bar-two"></div>
+                    </div>
+
+                    <span>12%</span>
+
+                </div>
+
+
+                <div class="rating-row">
+
+                    <span>1 Star</span>
+
+                    <div class="rating-bar-background">
+                        <div class="rating-bar bar-one"></div>
+                    </div>
+
+                    <span>5%</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= WRITE REVIEW ================= -->
+
+        <div class="write-review-box">
+
+            <h2>Write a Review</h2>
+
+            <p>
+                Share your experience and help other car buyers.
+            </p>
+
+
+            <form>
+
+
+                <div class="review-form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>Your Name</label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter your name"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>Select Car</label>
+
+                        <select required>
+
+                            <option value="">
+                                Choose a car
+                            </option>
+
+                            <option>BMW M4 Competition</option>
+
+                            <option>Porsche 911</option>
+
+                            <option>Audi RS7 Sportback</option>
+
+                            <option>Mercedes-AMG GT</option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>Your Rating</label>
+
+                        <div class="rating-select">
+
+                            ★ ★ ★ ★ ★
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>Email Address</label>
+
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
+
+
+
+                    <div class="form-group full-width">
+
+                        <label>Your Review</label>
+
+                        <textarea
+                            placeholder="Write your experience here..."
+                            required></textarea>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="submit-review-btn">
+
+                    Submit Review
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+
+        <!-- ================= USER REVIEWS ================= -->
+
+        <div class="reviews-heading">
+
+            <h2>
+                What Our <span>Users Say</span>
+            </h2>
+
+        </div>
+
+
+
+        <!-- REVIEW 1 -->
+
+        <div class="review-card">
+
+            <div class="review-card-header">
+
+
+                <div class="review-user">
+
+                    <div class="user-avatar">
+                        RS
+                    </div>
+
+
+                    <div>
+
+                        <h3>Rahul Sharma</h3>
+
+                        <p>Verified User</p>
+
+                    </div>
+
+                </div>
+
+
+                <p class="review-date">
+                    2 days ago
+                </p>
+
+            </div>
+
+
+            <p class="review-car-name">
+                BMW M4 Competition
+            </p>
+
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+
+            <p>
+                Amazing performance and an absolutely beautiful design.
+                The driving experience feels premium and powerful at
+                the same time.
+            </p>
+
+        </div>
+
+
+
+        <!-- REVIEW 2 -->
+
+        <div class="review-card">
+
+            <div class="review-card-header">
+
+
+                <div class="review-user">
+
+                    <div class="user-avatar">
+                        AM
+                    </div>
+
+
+                    <div>
+
+                        <h3>Arjun Mehta</h3>
+
+                        <p>Verified User</p>
+
+                    </div>
+
+                </div>
+
+
+                <p class="review-date">
+                    1 week ago
+                </p>
+
+            </div>
+
+
+            <p class="review-car-name">
+                Porsche 911
+            </p>
+
+
+            <div class="review-stars">
+                ★★★★☆
+            </div>
+
+
+            <p>
+                The Porsche 911 offers incredible handling and an iconic
+                design. It is an amazing car for people who truly enjoy
+                driving.
+            </p>
+
+        </div>
+
+
+
+        <!-- REVIEW 3 -->
+
+        <div class="review-card">
+
+            <div class="review-card-header">
+
+
+                <div class="review-user">
+
+                    <div class="user-avatar">
+                        SK
+                    </div>
+
+
+                    <div>
+
+                        <h3>Sneha Kapoor</h3>
+
+                        <p>Verified User</p>
+
+                    </div>
+
+                </div>
+
+
+                <p class="review-date">
+                    2 weeks ago
+                </p>
+
+            </div>
+
+
+            <p class="review-car-name">
+                Audi RS7 Sportback
+            </p>
+
+
+            <div class="review-stars">
+                ★★★★★
+            </div>
+
+
+            <p>
+                The combination of luxury, comfort and performance is
+                excellent. The interior is modern and the car looks
+                extremely stylish.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <div class="footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-col footer-brand">
+      <div class="logo">VELO<span>CIA</span></div>
+      <p>The showroom, reimagined online. Compare, shortlist and get ready to drive.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn btn-outline">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#launches">New Launches</a>
+      <a href="#featured">Featured Cars</a>
+      <a href="#brands">Popular Brands</a>
+      <a href="#poll">Poll</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Dealer Login</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <a href="tel:+911234567890">+91 12345 67890</a>
+      <a href="mailto:hello@velocia.example">hello@velocia.example</a>
+      <div class="social-row">
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+        <a href="#">X</a>
+        <a href="#">FB</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 VELOCIA. Built as a student project.</p>
+    <p>Privacy · Terms · Sitemap</p>
+  </div>
+</div>
+
+
+</body>
+
+</html>

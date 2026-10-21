@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tesla Model S | VELOCIA</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        body {
+            background-color: #0b1014;
+            color: #ffffff;
+        }
+
+        /* CAR MAIN SECTION */
+
+        .car-details-container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 50px auto;
+        }
+
+        .car-details-main {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        /* IMAGE GALLERY */
+
+        .main-car-image {
+            width: 100%;
+            height: 430px;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #2a3138;
+        }
+
+        .main-car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .car-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .car-gallery img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #2a3138;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .car-gallery img:hover {
+            transform: scale(1.05);
+            border-color: #c9a227;
+        }
+
+        /* CAR INFORMATION */
+
+        .car-brand {
+            color: #c9a227;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .car-name {
+            font-size: 45px;
+            margin: 10px 0;
+        }
+
+        .car-price {
+            color: #c9a227;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .car-description {
+            color: #b9b9b9;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* QUICK SPECS */
+
+        .quick-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .quick-spec-box {
+            background-color: #12191f;
+            padding: 15px;
+            border: 1px solid #283038;
+            border-radius: 8px;
+        }
+
+        .quick-spec-box p {
+            color: #999999;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .quick-spec-box h4 {
+            color: white;
+            font-size: 15px;
+        }
+
+        /* BUTTONS */
+
+        .details-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .test-drive-btn {
+            flex: 1;
+            background-color: #c9a227;
+            color: #111111;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .wishlist-btn {
+            background-color: transparent;
+            color: #c9a227;
+            border: 1px solid #c9a227;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* COMMON SECTION */
+
+        .details-section {
+            width: 90%;
+            max-width: 1300px;
+            margin: 80px auto;
+        }
+
+        .details-section h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-line {
+            width: 60px;
+            height: 3px;
+            background-color: #c9a227;
+            margin-bottom: 35px;
+        }
+
+        /* SPECIFICATIONS */
+
+        .specifications-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .spec-card {
+            background-color: #12191f;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #283038;
+        }
+
+        .spec-card h4 {
+            color: #999999;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .spec-card p {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        /* COLORS */
+
+        .color-options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .color-box {
+            text-align: center;
+        }
+
+        .color-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            margin-bottom: 8px;
+            border: 3px solid white;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+        .white {
+            background-color: white;
+        }
+
+        .red {
+            background-color: #b51d2a;
+        }
+
+        .blue {
+            background-color: #214c91;
+        }
+
+        .grey {
+            background-color: #666666;
+        }
+
+        /* FEATURES */
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-box {
+            background-color: #12191f;
+            padding: 20px;
+            border-left: 3px solid #c9a227;
+            border-radius: 5px;
+        }
+
+        .feature-box h4 {
+            margin-bottom: 8px;
+        }
+
+        .feature-box p {
+            color: #a9a9a9;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* PROS AND CONS */
+
+        .pros-cons-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .pros-box,
+        .cons-box {
+            background-color: #12191f;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #283038;
+        }
+
+        .pros-box h3 {
+            color: #5ecb77;
+            margin-bottom: 20px;
+        }
+
+        .cons-box h3 {
+            color: #e36b6b;
+            margin-bottom: 20px;
+        }
+
+        .pros-box li,
+        .cons-box li {
+            margin: 15px 0;
+            color: #c7c7c7;
+        }
+
+        /* 360 VIEW */
+
+        .view-360 {
+            background-color: #12191f;
+            border: 1px solid #283038;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .view-360 img {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .rotate-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 25px;
+            background-color: #c9a227;
+            color: #111111;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        /* RATINGS */
+
+        .rating-summary {
+            background-color: #12191f;
+            padding: 35px;
+            border-radius: 10px;
+            border: 1px solid #283038;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .overall-rating {
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .overall-rating h1 {
+            font-size: 60px;
+            color: #c9a227;
+        }
+
+        .stars {
+            color: #c9a227;
+            font-size: 25px;
+        }
+
+        .rating-text {
+            color: #a9a9a9;
+        }
+
+        .review-card {
+            background-color: #12191f;
+            border: 1px solid #283038;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .review-name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .review-card p {
+            color: #b9b9b9;
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+
+        .car-details-footer {
+            background-color: #090d10;
+            border-top: 1px solid #283038;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 45px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-brand h2 {
+            font-size: 26px;
+            letter-spacing: 2px;
+            color: white;
+        }
+
+        .footer-brand h2 span {
+            color: #c9a227;
+        }
+
+        .footer-brand p {
+            color: #999999;
+            margin-top: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: #b9b9b9;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #283038;
+        }
+
+        .footer-bottom p {
+            color: #777777;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+
+            .car-details-main {
+                grid-template-columns: 1fr;
+            }
+
+            .specifications-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .car-name {
+                font-size: 32px;
+            }
+
+            .quick-specs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .specifications-grid,
+            .features-grid,
+            .pros-cons-container {
+                grid-template-columns: 1fr;
+            }
+
+            .rating-summary,
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .car-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <div class="container navbar-inner">
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo">
+            VELO<span>CIA</span>
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="nav-links">
+
+            <!-- HOME -->
+
+            <a href="index.html">Home</a>
+
+
+            <!-- EXPLORE CARS DROPDOWN -->
+
+            <div class="dropdown">
+
+                <a href="cars.html" class="dropdown-title">
+                    Explore Cars <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="cars.html">
+                        All Cars
+                    </a>
+
+                    <a href="brands.html">
+                        Brands
+                    </a>
+
+                    <a href="compare.html">
+                        Compare Cars
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- MORE DROPDOWN -->
+
+            <div class="dropdown">
+
+                <a href="#" class="dropdown-title">
+                    More <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="wishlist.html">
+                        Wishlist
+                    </a>
+
+                    <a href="reviews.html">
+                        Reviews
+                    </a>
+
+                    <a href="about.html">
+                        About Us
+                    </a>
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </div>
+
+
+        <!-- TEST DRIVE BUTTON -->
+
+        <a href="test-drive.html"
+           class="btn btn-primary desktop-only">
+
+            Book a Test Drive
+
+        </a>
+
+    </div>
+
+    <!-- hamburger menu button, only shows on mobile (pure CSS, no JS) -->
+    <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
+    <label for="menuCheckbox" class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </label>
+
+  <!-- mobile dropdown menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="cars.html">All Cars</a>
+    <a href="brands.html">Brands</a>
+    <a href="compare.html">Compare Cars</a>
+    <a href="wishlist.html">Wishlist</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="login.html">Login / Sign Up</a>
+  </div>
+</div>
+
+
+
+    <!-- CAR DETAILS -->
+
+    <div class="car-details-container">
+
+        <div class="car-details-main">
+
+
+            <!-- IMAGES -->
+
+            <div>
+
+                <div class="main-car-image">
+
+                    <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=80"
+                        alt="Tesla Model S">
+
+                </div>
+
+
+                <div class="car-gallery">
+
+                    <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=600&q=80"
+                        alt="Tesla">
+
+                    <img src="https://images.unsplash.com/photo-1617704548623-340376564e68?auto=format&fit=crop&w=600&q=80"
+                        alt="Tesla Front View">
+
+                    <img src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&w=600&q=80"
+                        alt="Tesla Side View">
+
+                    <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=600&q=80"
+                        alt="Tesla Rear View">
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div>
+
+                <p class="car-brand">TESLA</p>
+
+                <h1 class="car-name">Tesla Model S</h1>
+
+                <p class="car-price">₹1.50 Crore onwards</p>
+
+                <p class="car-description">
+                    The Tesla Model S is a high-performance electric luxury
+                    sedan known for its futuristic technology, impressive
+                    acceleration and long electric driving range.
+                </p>
+
+
+                <div class="quick-specs">
+
+                    <div class="quick-spec-box">
+                        <p>Motor</p>
+                        <h4>Dual Motor AWD</h4>
+                    </div>
+
+                    <div class="quick-spec-box">
+                        <p>Power</p>
+                        <h4>670 HP</h4>
+                    </div>
+
+                    <div class="quick-spec-box">
+                        <p>Fuel Type</p>
+                        <h4>Electric</h4>
+                    </div>
+
+                    <div class="quick-spec-box">
+                        <p>Transmission</p>
+                        <h4>Single Speed</h4>
+                    </div>
+
+                    <div class="quick-spec-box">
+                        <p>Top Speed</p>
+                        <h4>250 km/h</h4>
+                    </div>
+
+                    <div class="quick-spec-box">
+                        <p>Seating</p>
+                        <h4>5 Seats</h4>
+                    </div>
+
+                </div>
+
+
+                <div class="details-buttons">
+
+                    <a href="test-drive.html" class="test-drive-btn">
+                        Book a Test Drive
+                    </a>
+
+                    <a href="wishlist.html" class="wishlist-btn">
+                        ♡ Wishlist
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FULL SPECIFICATIONS -->
+
+    <section class="details-section">
+
+        <h2>Full Specifications</h2>
+
+        <div class="section-line"></div>
+
+
+        <div class="specifications-grid">
+
+            <div class="spec-card">
+                <h4>MOTOR</h4>
+                <p>Dual Motor Electric</p>
+            </div>
+
+            <div class="spec-card">
+                <h4>POWER</h4>
+                <p>670 HP</p>
+            </div>
+
+            <div class="spec-card">
+                <h4>RANGE</h4>
+                <p>Up to 600+ km</p>
+            </div>
+
+            <div class="spec-card">
+                <h4>FUEL TYPE</h4>
+                <p>Electric</p>
+            </div>
+
+            <div class="spec-card">
+                <h4>TRANSMISSION</h4>
+                <p>Single Speed Automatic</p>
+            </div>
+
+            <div class="spec-card">
+                <h4>TOP SPEED</h4>
+                <p>250 km/h</p>
+            </div>
+
+            <div class="spec-card">
+                <h4>SEATING CAPACITY</h4>
+                <p>5 People</p>
+            </div>
+
+            <div class="spec-card">
+                <h4>SAFETY</h4>
+                <p>Advanced Safety Technology</p>
+            </div>
+
+            <div class="spec-card">
+                <h4>WHEEL TYPE</h4>
+                <p>Alloy Wheels</p>
+            </div>
+
+            <div class="spec-card">
+                <h4>DRIVE TYPE</h4>
+                <p>All Wheel Drive</p>
+            </div>
+
+            <div class="spec-card">
+                <h4>ACCELERATION</h4>
+                <p>0–100 km/h in 3.2 sec</p>
+            </div>
+
+            <div class="spec-card">
+                <h4>BODY TYPE</h4>
+                <p>Luxury Sedan</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COLORS -->
+
+    <section class="details-section">
+
+        <h2>Available Colors</h2>
+
+        <div class="section-line"></div>
+
+        <div class="color-options">
+
+            <div class="color-box">
+                <div class="color-circle white"></div>
+                <p>White</p>
+            </div>
+
+            <div class="color-box">
+                <div class="color-circle black"></div>
+                <p>Black</p>
+            </div>
+
+            <div class="color-box">
+                <div class="color-circle blue"></div>
+                <p>Blue</p>
+            </div>
+
+            <div class="color-box">
+                <div class="color-circle red"></div>
+                <p>Red</p>
+            </div>
+
+            <div class="color-box">
+                <div class="color-circle grey"></div>
+                <p>Grey</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="details-section">
+
+        <h2>Key Features</h2>
+
+        <div class="section-line"></div>
+
+        <div class="features-grid">
+
+            <div class="feature-box">
+                <h4>⚡ Electric Performance</h4>
+                <p>Instant electric torque provides powerful acceleration.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>🤖 Smart Technology</h4>
+                <p>Advanced software and intelligent driving technology.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>📱 Large Touchscreen</h4>
+                <p>Modern central display controls most vehicle functions.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>🔋 Long Range</h4>
+                <p>Designed for long-distance electric driving.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>🛡️ Advanced Safety</h4>
+                <p>Multiple advanced safety and driver assistance systems.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>🚀 Instant Acceleration</h4>
+                <p>Powerful electric motors provide fast and smooth acceleration.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROS AND CONS -->
+
+    <section class="details-section">
+
+        <h2>Pros & Cons</h2>
+
+        <div class="section-line"></div>
+
+        <div class="pros-cons-container">
+
+            <div class="pros-box">
+
+                <h3>✓ Pros</h3>
+
+                <ul>
+                    <li>Extremely quick acceleration</li>
+                    <li>Advanced technology</li>
+                    <li>Long electric range</li>
+                    <li>Spacious interior</li>
+                    <li>Low running cost compared with petrol cars</li>
+                </ul>
+
+            </div>
+
+
+            <div class="cons-box">
+
+                <h3>✕ Cons</h3>
+
+                <ul>
+                    <li>Expensive purchase price</li>
+                    <li>Charging infrastructure may vary</li>
+                    <li>Long charging time compared with refuelling</li>
+                    <li>Expensive repairs</li>
+                    <li>Technology-heavy interface may not suit everyone</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- 360 VIEW -->
+
+    <section class="details-section">
+
+        <h2>360° Car View</h2>
+
+        <div class="section-line"></div>
+
+        <div class="view-360">
+
+            <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=80"
+                alt="Tesla Model S">
+
+            <p>
+                Explore the Tesla Model S from different angles.
+            </p>
+
+            <a href="#" class="rotate-button">
+                ↻ Rotate Car
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- RATINGS -->
+
+    <section class="details-section">
+
+        <h2>Ratings & Reviews</h2>
+
+        <div class="section-line"></div>
+
+        <div class="rating-summary">
+
+            <div class="overall-rating">
+
+                <h1>4.7</h1>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>Overall Rating</p>
+
+            </div>
+
+
+            <div class="rating-text">
+
+                <h3>Futuristic and Powerful</h3>
+
+                <p>
+                    The Tesla Model S is appreciated for its electric
+                    performance, modern technology and impressive acceleration.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="review-header">
+
+                <div>
+
+                    <p class="review-name">
+                        Aryan Sharma
+                    </p>
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                </div>
+
+                <p>3 days ago</p>
+
+            </div>
+
+            <p>
+                The acceleration is unbelievable and the technology feels
+                futuristic. A completely different driving experience.
+            </p>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="review-header">
+
+                <div>
+
+                    <p class="review-name">
+                        Riya Kapoor
+                    </p>
+
+                    <div class="stars">
+                        ★★★★☆
+                    </div>
+
+                </div>
+
+                <p>1 week ago</p>
+
+            </div>
+
+            <p>
+                Very comfortable and modern. The large touchscreen and
+                electric performance make the car feel unique.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-col footer-brand">
+      <div class="logo">VELO<span>CIA</span></div>
+      <p>The showroom, reimagined online. Compare, shortlist and get ready to drive.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn btn-outline">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#launches">New Launches</a>
+      <a href="#featured">Featured Cars</a>
+      <a href="#brands">Popular Brands</a>
+      <a href="#poll">Poll</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Dealer Login</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <a href="tel:+911234567890">+91 12345 67890</a>
+      <a href="mailto:hello@velocia.example">hello@velocia.example</a>
+      <div class="social-row">
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+        <a href="#">X</a>
+        <a href="#">FB</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 VELOCIA. Built as a student project.</p>
+    <p>Privacy · Terms · Sitemap</p>
+  </div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELOCIA — Find Your Next Car</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loading Screen Start -->
+<div class="loader-screen">
+    <div class="loader-content">
+        <h1>VELO<span>CIA</span></h1>
+        <div class="car-animation">
+            🚗
+        </div>
+        <p>Loading Your Dream Ride...</p>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="container navbar-inner">
+        <!-- LOGO -->
+        <a href="index.html" class="logo">
+            VELO<span>CIA</span>
+        </a>
+
+        <!-- NAVIGATION -->
+        <div class="nav-links">
+            <!-- HOME -->
+            <a href="index.html">Home</a>
+
+            <!-- EXPLORE CARS DROPDOWN -->
+            <div class="dropdown">
+                <a href="cars.html" class="dropdown-title">
+                    Explore Cars <span>▾</span>
+                </a>
+
+                <div class="dropdown-menu">
+                    <a href="cars.html">
+                        All Cars
+                    </a>
+                    <a href="brands.html">
+                        Brands
+                    </a>
+                    <a href="compare.html">
+                       Compare Cars
+                    </a>
+                </div>
+            </div>
+
+            <!-- MORE DROPDOWN (hidden on mobile navbar row, moves into hamburger menu) -->
+            <div class="dropdown mobile-hide">
+                <a href="#" class="dropdown-title">
+                    More <span>▾</span>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="wishlist.html">
+                        Wishlist
+                    </a>
+                    <a href="reviews.html">
+                        Reviews
+                    </a>
+                    <a href="about.html">
+                        About Us
+                    </a>
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+
+            <!-- LOGIN (hidden on mobile navbar row, moves into hamburger menu) -->
+            <a href="login.html" class="mobile-hide">
+                Login
+            </a>
+        </div>
+
+        <!-- TEST DRIVE BUTTON -->
+        <a href="test-drive.html"
+           class="btn btn-primary desktop-only">
+            Book a Test Drive
+        </a>
+    </div>
+
+    <!-- hamburger menu button, only shows on mobile (pure CSS, no JS) -->
+    <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
+    <label for="menuCheckbox" class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </label>
+
+  <!-- mobile dropdown menu — only the "More" items + Login live here now,
+       since Home and Explore Cars stay visible on the navbar itself -->
+  <div class="mobile-menu">
+    <a href="wishlist.html">Wishlist</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="login.html">Login / Sign Up</a>
+  </div>
+</div>
+
+
+<!-- HERO SECTION (big banner with background photo) -->
+<div class="hero">
+  <!-- dark overlay div sits on top of the background photo so text is readable -->
+  <div class="hero-overlay"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <h1>Your next car <br> starts right here.</h1>
+      <p>Browse launches, compare specs and shortlist your favorite car — all before you visit a showroom.</p>
+    </div>
+  </div>
+
+  <!-- search box, placed so it overlaps the bottom of the hero -->
+  <div class="container">
+    <div class="search-box">
+
+      <div class="search-field">
+        <label for="make">Make</label>
+        <select id="make" name="make">
+          <option value="">Any make</option>
+          <option>Maruti Suzuki</option>
+          <option>Hyundai</option>
+          <option>Tata</option>
+          <option>Honda</option>
+          <option>Toyota</option>
+          <option>Mahindra</option>
+          <option>Kia</option>
+        </select>
+      </div>
+
+      <div class="search-field">
+        <label for="type">Body Type</label>
+        <select id="type" name="type">
+          <option value="">Any type</option>
+          <option>Hatchback</option>
+          <option>Sedan</option>
+          <option>SUV</option>
+          <option>Electric</option>
+          <option>MPV</option>
+        </select>
+      </div>
+
+      <div class="search-field">
+        <label for="budget">Budget</label>
+        <select id="budget" name="budget">
+          <option value="">Any budget</option>
+          <option>Under ₹10 Lakh</option>
+          <option>₹10 Lakh – ₹20 Lakh</option>
+          <option>₹20 Lakh – ₹35 Lakh</option>
+          <option>₹35 Lakh+</option>
+        </select>
+      </div>
+
+      <div class="search-field search-field-wide">
+        <label for="keyword">Search Model</label>
+        <input type="text" id="keyword" name="keyword" placeholder="e.g. electric SUV">
+      </div>
+
+      <button type="button" class="btn btn-primary search-btn">Search Cars</button>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- QUOTE SECTION -->
+<div class="quote-section">
+  <div class="container">
+    <p class="quote-symbol">&ldquo;</p>
+    <p class="quote-text">Experience your dream car <span>before</span> the purchase.</p>
+    <p class="quote-by">— The VELOCIA Promise</p>
+  </div>
+</div>
+
+
+<!-- LATEST LAUNCHES SECTION -->
+<div class="section" id="launches">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Latest Launches</h2>
+      <p>Fresh off the production line — the newest cars this season.</p>
+    </div>
+
+    <!-- this div scrolls sideways on small screens -->
+    <div class="card-row">
+
+      <div class="car-card">
+        <div class="car-image">
+          <span class="tag">New</span>
+          <img src="https://images.unsplash.com/photo-1655015887321-5826a531e7ce?auto=format&fit=crop&w=600&q=60" alt="Maruti Suzuki Swift hatchback">
+        </div>
+        <div class="car-info">
+          <h3>Maruti Suzuki Swift</h3>
+          <p class="car-meta">Petrol Hatchback · Launched Aug 2026</p>
+          <p class="car-price">From <span>₹6.49 Lakh</span></p>
+        </div>
+      </div>
+
+      <div class="car-card">
+        <div class="car-image">
+          <span class="tag">New</span>
+          <img src="https://images.unsplash.com/photo-1515614021087-25eea8aa224e?auto=format&fit=crop&w=600&q=60" alt="Hyundai Creta SUV">
+        </div>
+        <div class="car-info">
+          <h3>Hyundai Creta</h3>
+          <p class="car-meta">Petrol SUV · Launched Jul 2026</p>
+          <p class="car-price">From <span>₹11.11 Lakh</span></p>
+        </div>
+      </div>
+
+      <div class="car-card">
+        <div class="car-image">
+          <span class="tag">New</span>
+          <img src="https://images.unsplash.com/photo-1533239538464-b23ee39003da?auto=format&fit=crop&w=600&q=60" alt="Honda City sedan">
+        </div>
+        <div class="car-info">
+          <h3>Honda City</h3>
+          <p class="car-meta">Petrol Sedan · Launched Jul 2026</p>
+          <p class="car-price">From <span>₹11.72 Lakh</span></p>
+        </div>
+      </div>
+
+      <div class="car-card">
+        <div class="car-image">
+          <span class="tag">New</span>
+          <img src="https://images.unsplash.com/photo-1648866891956-c629929382da?auto=format&fit=crop&w=600&q=60" alt="Tata Nexon EV electric SUV">
+        </div>
+        <div class="car-info">
+          <h3>Tata Nexon EV</h3>
+          <p class="car-meta">Electric SUV · Launched Jun 2026</p>
+          <p class="car-price">From <span>₹12.49 Lakh</span></p>
+        </div>
+      </div>
+
+      <div class="car-card">
+        <div class="car-image">
+          <span class="tag">New</span>
+          <img src="https://images.unsplash.com/photo-1707646602764-2bd9bedc0c05?auto=format&fit=crop&w=600&q=60" alt="Toyota Fortuner SUV">
+        </div>
+        <div class="car-info">
+          <h3>Toyota Fortuner</h3>
+          <p class="car-meta">Diesel SUV · Launched Jun 2026</p>
+          <p class="car-price">From <span>₹33.43 Lakh</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FEATURED CARS SECTION -->
+<div class="section section-alt" id="featured">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Featured Cars</h2>
+      <p>Hand-picked models our visitors are shortlisting most this month.</p>
+    </div>
+
+    <div class="featured-grid">
+
+      <div class="featured-card">
+        <div class="car-image">
+          <img src="https://images.unsplash.com/photo-1625642078456-c337c2663947?auto=format&fit=crop&w=700&q=60" alt="Mahindra XUV700 SUV">
+        </div>
+        <div class="car-info">
+          <div class="featured-title-row">
+            <h3>Mahindra XUV700</h3>
+            <span class="badge">SUV</span>
+          </div>
+
+          <div class="spec-list">
+            <div class="spec-item">
+              <p class="spec-label">Power</p>
+              <p class="spec-value">197 bhp</p>
+            </div>
+            <div class="spec-item">
+              <p class="spec-label">0–100</p>
+              <p class="spec-value">9.0s</p>
+            </div>
+            <div class="spec-item">
+              <p class="spec-label">Seats</p>
+              <p class="spec-value">7</p>
+            </div>
+          </div>
+
+          <div class="featured-footer">
+            <p class="car-price">From <span>₹14.99 Lakh</span></p>
+            <!-- <a href="#" class="link-btn">View Details</a> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="featured-card">
+        <div class="car-image">
+          <img src="https://images.unsplash.com/photo-1685019718580-657d44e32d38?auto=format&fit=crop&w=700&q=60" alt="Kia Seltos SUV">
+        </div>
+        <div class="car-info">
+          <div class="featured-title-row">
+            <h3>Kia Seltos</h3>
+            <span class="badge">SUV</span>
+          </div>
+
+          <div class="spec-list">
+            <div class="spec-item">
+              <p class="spec-label">Power</p>
+              <p class="spec-value">115 bhp</p>
+            </div>
+            <div class="spec-item">
+              <p class="spec-label">0–100</p>
+              <p class="spec-value">11.2s</p>
+            </div>
+            <div class="spec-item">
+              <p class="spec-label">Mileage</p>
+              <p class="spec-value">17 km/l</p>
+            </div>
+          </div>
+
+          <div class="featured-footer">
+            <p class="car-price">From <span>₹11.90 Lakh</span></p>
+            <!-- <a href="#" class="link-btn">View Details</a> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="featured-card">
+        <div class="car-image">
+          <img src="https://images.unsplash.com/photo-1701783472860-e0b3f0c4305c?auto=format&fit=crop&w=700&q=60" alt="Toyota Innova Crysta MPV">
+        </div>
+        <div class="car-info">
+          <div class="featured-title-row">
+            <h3>Toyota Innova Crysta</h3>
+            <span class="badge">MPV</span>
+          </div>
+
+          <div class="spec-list">
+            <div class="spec-item">
+              <p class="spec-label">Power</p>
+              <p class="spec-value">148 bhp</p>
+            </div>
+            <div class="spec-item">
+              <p class="spec-label">Seats</p>
+              <p class="spec-value">7</p>
+            </div>
+            <div class="spec-item">
+              <p class="spec-label">Mileage</p>
+              <p class="spec-value">14 km/l</p>
+            </div>
+          </div>
+
+          <div class="featured-footer">
+            <p class="car-price">From <span>₹19.99 Lakh</span></p>
+            <!-- <a href="#" class="link-btn">View Details</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- POPULAR BRANDS SECTION -->
+<div class="section" id="brands">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Popular Brands</h2>
+      <p>Explore lineups from the manufacturers our visitors trust most.</p>
+    </div>
+
+    <div class="brand-grid">
+      <div class="brand-box">Maruti Suzuki</div>
+      <div class="brand-box">Hyundai</div>
+      <div class="brand-box">Tata</div>
+      <div class="brand-box">Mahindra</div>
+      <div class="brand-box">Honda</div>
+      <div class="brand-box">Toyota</div>
+      <div class="brand-box">Kia</div>
+      <div class="brand-box">MG</div>
+      <div class="brand-box">Skoda</div>
+      <div class="brand-box">Volkswagen</div>
+      <div class="brand-box">Renault</div>
+      <div class="brand-box">Nissan</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- POLL SECTION (pure CSS, no JavaScript) -->
+<div class="section section-alt" id="poll">
+  <div class="container">
+
+    <div class="section-title center">
+      <h2>What Matters Most To You?</h2>
+      <p>Cast your vote — we ask something new every week.</p>
+    </div>
+
+    <div class="poll-box">
+      <p class="poll-question">When picking your next car, what do you weigh first?</p>
+
+      <!-- each option is: radio input + label. Clicking a label selects the radio above it -->
+      <div class="poll-option">
+        <input type="radio" id="opt1" name="poll" checked>
+        <label for="opt1">
+          <div class="poll-option-top">
+            <span>Performance &amp; driving feel</span>
+            <span>38%</span>
+          </div>
+          <div class="poll-bar">
+            <div class="poll-bar-fill" style="width:38%"></div>
+          </div>
+        </label>
+      </div>
+
+      <div class="poll-option">
+        <input type="radio" id="opt2" name="poll">
+        <label for="opt2">
+          <div class="poll-option-top">
+            <span>Design &amp; styling</span>
+            <span>24%</span>
+          </div>
+          <div class="poll-bar">
+            <div class="poll-bar-fill" style="width:24%"></div>
+          </div>
+        </label>
+      </div>
+
+      <div class="poll-option">
+        <input type="radio" id="opt3" name="poll">
+        <label for="opt3">
+          <div class="poll-option-top">
+            <span>Fuel efficiency &amp; range</span>
+            <span>19%</span>
+          </div>
+          <div class="poll-bar">
+            <div class="poll-bar-fill" style="width:19%"></div>
+          </div>
+        </label>
+      </div>
+
+      <div class="poll-option">
+        <input type="radio" id="opt4" name="poll">
+        <label for="opt4">
+          <div class="poll-option-top">
+            <span>On-road price</span>
+            <span>13%</span>
+          </div>
+          <div class="poll-bar">
+            <div class="poll-bar-fill" style="width:13%"></div>
+          </div>
+        </label>
+      </div>
+
+      <div class="poll-option">
+        <input type="radio" id="opt5" name="poll">
+        <label for="opt5">
+          <div class="poll-option-top">
+            <span>Tech &amp; safety features</span>
+            <span>6%</span>
+          </div>
+          <div class="poll-bar">
+            <div class="poll-bar-fill" style="width:6%"></div>
+          </div>
+        </label>
+      </div>
+
+      <p class="poll-footnote">1,842 votes so far</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-col footer-brand">
+      <div class="logo">VELO<span>CIA</span></div>
+      <p>The showroom, reimagined online. Compare, shortlist and get ready to drive.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn btn-outline">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#launches">New Launches</a>
+      <a href="#featured">Featured Cars</a>
+      <a href="#brands">Popular Brands</a>
+      <a href="#poll">Poll</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Dealer Login</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <a href="tel:+911234567890">+91 12345 67890</a>
+      <a href="mailto:hello@velocia.example">hello@velocia.example</a>
+      <div class="social-row">
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+        <a href="#">X</a>
+        <a href="#">FB</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 VELOCIA. Built as a student project.</p>
+    <p>Privacy · Terms · Sitemap</p>
+  </div>
+</div>
+</body>
+</html>

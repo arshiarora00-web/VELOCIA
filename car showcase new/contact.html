@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | VELOCIA</title>
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <style>
+
+        /* =========================
+           CONTACT HERO
+           ========================= */
+
+        .contact-hero {
+
+            min-height: 330px;
+
+            background:
+                linear-gradient(
+                    rgba(5, 10, 14, 0.70),
+                    rgba(5, 10, 14, 0.92)
+                ),
+
+                url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+
+            background-position: center;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+        }
+
+
+        .contact-hero-content {
+
+            max-width: 750px;
+
+        }
+
+
+        .contact-hero h1 {
+
+            color: white;
+
+            font-size: 52px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .contact-hero h1 span {
+
+            color: #c9a227;
+
+        }
+
+
+        .contact-hero p {
+
+            color: #d0d0d0;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =========================
+           MAIN CONTACT SECTION
+           ========================= */
+
+        .contact-section {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: 90px auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1.2fr;
+
+            gap: 50px;
+
+            align-items: start;
+
+        }
+
+
+        /* =========================
+           CONTACT INFORMATION
+           ========================= */
+
+        .contact-info h2 {
+
+            font-size: 35px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .contact-info h2 span {
+
+            color: #c9a227;
+
+        }
+
+
+        .contact-info > p {
+
+            color: #999999;
+
+            line-height: 1.8;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .contact-details {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 20px;
+
+        }
+
+
+        .contact-card {
+
+            background-color: #12191f;
+
+            border: 1px solid #283038;
+
+            border-radius: 10px;
+
+            padding: 22px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            transition: 0.3s;
+
+        }
+
+
+        .contact-card:hover {
+
+            border-color: #c9a227;
+
+            transform: translateX(5px);
+
+        }
+
+
+        .contact-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            min-width: 50px;
+
+            background-color: rgba(201, 162, 39, 0.15);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            font-size: 22px;
+
+        }
+
+
+        .contact-card h3 {
+
+            margin: 0 0 8px;
+
+            color: white;
+
+            font-size: 18px;
+
+        }
+
+
+        .contact-card p {
+
+            margin: 0;
+
+            color: #999999;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           CONTACT FORM
+           ========================= */
+
+        .contact-form-container {
+
+            background-color: #12191f;
+
+            border: 1px solid #283038;
+
+            border-radius: 12px;
+
+            padding: 40px;
+
+        }
+
+
+        .contact-form-container h2 {
+
+            font-size: 30px;
+
+            margin-top: 0;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .contact-form-container > p {
+
+            color: #999999;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .contact-form {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+        }
+
+
+        .form-row {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px;
+
+        }
+
+
+        .input-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+
+        .input-group label {
+
+            color: #c7c7c7;
+
+            font-size: 14px;
+
+        }
+
+
+        .input-group input,
+
+        .input-group textarea {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 14px;
+
+            background-color: #0b1014;
+
+            border: 1px solid #283038;
+
+            border-radius: 6px;
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+            outline: none;
+
+        }
+
+
+        .input-group textarea {
+
+            resize: vertical;
+
+            min-height: 140px;
+
+        }
+
+
+        .input-group input:focus,
+
+        .input-group textarea:focus {
+
+            border-color: #c9a227;
+
+        }
+
+
+        .contact-submit-btn {
+
+            border: none;
+
+            background-color: #c9a227;
+
+            color: #111111;
+
+            padding: 15px;
+
+            border-radius: 5px;
+
+            font-weight: bold;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .contact-submit-btn:hover {
+
+            background-color: #e0ba35;
+
+        }
+
+
+        /* =========================
+           WORKING HOURS
+           ========================= */
+
+        .working-hours {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: 0 auto 90px;
+
+        }
+
+
+        .working-hours-box {
+
+            background-color: #12191f;
+
+            border: 1px solid #283038;
+
+            padding: 40px;
+
+            border-radius: 12px;
+
+        }
+
+
+        .working-hours-box h2 {
+
+            text-align: center;
+
+            font-size: 30px;
+
+            margin-top: 0;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .hours-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .hour-card {
+
+            text-align: center;
+
+            border: 1px solid #283038;
+
+            padding: 25px;
+
+            border-radius: 8px;
+
+        }
+
+
+        .hour-card h3 {
+
+            color: #c9a227;
+
+            margin-top: 0;
+
+        }
+
+
+        .hour-card p {
+
+            color: #999999;
+
+            margin: 0;
+
+        }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        .contact-footer {
+
+            background-color: #090d10;
+
+            border-top: 1px solid #283038;
+
+            margin-top: 80px;
+
+        }
+
+
+        .footer-content {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 45px 0;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 30px;
+
+        }
+
+
+        .footer-brand h2 {
+
+            color: white;
+
+            font-size: 26px;
+
+        }
+
+
+        .footer-brand h2 span {
+
+            color: #c9a227;
+
+        }
+
+
+        .footer-brand p {
+
+            color: #999999;
+
+        }
+
+
+        .footer-links {
+
+            display: flex;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .footer-links a {
+
+            color: #b9b9b9;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+
+        }
+
+
+        .footer-links a:hover {
+
+            color: #c9a227;
+
+        }
+
+
+        .footer-bottom {
+
+            text-align: center;
+
+            border-top: 1px solid #283038;
+
+            padding: 20px;
+
+            color: #777777;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 900px) {
+
+            .contact-section {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .hours-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .contact-hero h1 {
+
+                font-size: 38px;
+
+            }
+
+
+            .contact-section {
+
+                margin: 60px auto;
+
+            }
+
+
+            .contact-form-container {
+
+                padding: 25px;
+
+            }
+
+
+            .form-row {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .footer-content {
+
+                flex-direction: column;
+
+                text-align: center;
+
+            }
+
+
+            .footer-links {
+
+                justify-content: center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+<div class="navbar">
+
+    <div class="container navbar-inner">
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo">
+            VELO<span>CIA</span>
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <div class="nav-links">
+
+            <!-- HOME -->
+
+            <a href="index.html">Home</a>
+
+
+            <!-- EXPLORE CARS DROPDOWN -->
+
+            <div class="dropdown">
+
+                <a href="cars.html" class="dropdown-title">
+                    Explore Cars <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="cars.html">
+                        All Cars
+                    </a>
+
+                    <a href="brands.html">
+                        Brands
+                    </a>
+
+                    <a href="compare.html">
+                        Compare Cars
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- MORE DROPDOWN (hidden on mobile navbar row, moves into hamburger menu) -->
+
+            <div class="dropdown mobile-hide">
+
+                <a href="#" class="dropdown-title">
+                    More <span>▾</span>
+                </a>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="wishlist.html">
+                        Wishlist
+                    </a>
+
+                    <a href="reviews.html">
+                        Reviews
+                    </a>
+
+                    <a href="about.html">
+                        About Us
+                    </a>
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGIN (hidden on mobile navbar row, moves into hamburger menu) -->
+
+            <a href="login.html" class="mobile-hide">
+                Login
+            </a>
+
+        </div>
+
+
+        <!-- TEST DRIVE BUTTON -->
+
+        <a href="test-drive.html"
+           class="btn btn-primary desktop-only">
+
+            Book a Test Drive
+
+        </a>
+
+    </div>
+
+    <!-- hamburger menu button, only shows on mobile (pure CSS, no JS) -->
+    <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
+    <label for="menuCheckbox" class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </label>
+
+  <!-- mobile dropdown menu — only the "More" items + Login live here,
+       since Home and Explore Cars stay visible on the navbar itself -->
+  <div class="mobile-menu">
+    <a href="wishlist.html">Wishlist</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="login.html">Login / Sign Up</a>
+  </div>
+</div>
+
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="contact-hero">
+
+        <div class="contact-hero-content">
+
+            <h1>
+                Get In <span>Touch</span>
+            </h1>
+
+
+            <p>
+
+                Have a question about VELOCIA or need help finding
+                your perfect car? We'd love to hear from you.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CONTACT SECTION ================= -->
+
+    <section class="contact-section">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="contact-info">
+
+            <h2>
+                Let's Start a <span>Conversation</span>
+            </h2>
+
+
+            <p>
+
+                Whether you have questions about our platform, need help
+                exploring cars or simply want to share your feedback,
+                our team is here to help.
+
+            </p>
+
+
+
+            <div class="contact-details">
+
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        ✉️
+                    </div>
+
+
+                    <div>
+
+                        <h3>Email Us</h3>
+
+                        <p>
+                            support@velocia.com
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        📞
+                    </div>
+
+
+                    <div>
+
+                        <h3>Call Us</h3>
+
+                        <p>
+                            +91 98765 43210
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="contact-card">
+
+                    <div class="contact-icon">
+                        📍
+                    </div>
+
+
+                    <div>
+
+                        <h3>Visit Us</h3>
+
+                        <p>
+                            Punjab, India
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- RIGHT SIDE FORM -->
+
+        <div class="contact-form-container">
+
+            <h2>
+                Send Us a Message
+            </h2>
+
+
+            <p>
+                Fill in the form below and we'll get back to you soon.
+            </p>
+
+
+            <form class="contact-form">
+
+
+                <div class="form-row">
+
+
+                    <div class="input-group">
+
+                        <label>Full Name</label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="input-group">
+
+                        <label>Email Address</label>
+
+                        <input
+                            type="email"
+                            placeholder="you@example.com"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="input-group">
+
+                    <label>Subject</label>
+
+                    <input
+                        type="text"
+                        placeholder="What is your message about?"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="input-group">
+
+                    <label>Message</label>
+
+                    <textarea
+                        placeholder="Write your message here..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="contact-submit-btn">
+
+                    SEND MESSAGE
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= WORKING HOURS ================= -->
+
+    <section class="working-hours">
+
+
+        <div class="working-hours-box">
+
+
+            <h2>
+                Working Hours
+            </h2>
+
+
+            <div class="hours-grid">
+
+
+                <div class="hour-card">
+
+                    <h3>Monday - Friday</h3>
+
+                    <p>
+                        9:00 AM - 6:00 PM
+                    </p>
+
+                </div>
+
+
+
+                <div class="hour-card">
+
+                    <h3>Saturday</h3>
+
+                    <p>
+                        10:00 AM - 4:00 PM
+                    </p>
+
+                </div>
+
+
+
+                <div class="hour-card">
+
+                    <h3>Sunday</h3>
+
+                    <p>
+                        Closed
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <div class="footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-col footer-brand">
+      <div class="logo">VELO<span>CIA</span></div>
+      <p>The showroom, reimagined online. Compare, shortlist and get ready to drive.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email address">
+        <button type="submit" class="btn btn-outline">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#launches">New Launches</a>
+      <a href="#featured">Featured Cars</a>
+      <a href="#brands">Popular Brands</a>
+      <a href="#poll">Poll</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Press</a>
+      <a href="#">Dealer Login</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <a href="tel:+911234567890">+91 12345 67890</a>
+      <a href="mailto:hello@velocia.example">hello@velocia.example</a>
+      <div class="social-row">
+        <a href="#">IG</a>
+        <a href="#">YT</a>
+        <a href="#">X</a>
+        <a href="#">FB</a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; 2026 VELOCIA. Built as a student project.</p>
+    <p>Privacy · Terms · Sitemap</p>
+  </div>
+</div>
+
+
+</body>
+
+</html>
