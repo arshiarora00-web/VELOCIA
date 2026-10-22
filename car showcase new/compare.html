@@ -2,779 +2,428 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Compare Cars | VELOCIA</title>
 
-    <!-- Existing CSS -->
     <link rel="stylesheet" href="style.css">
 
-
     <style>
-
-        /* =========================
-           COMPARE PAGE
-           ========================= */
-
         body {
-            background-color: #0b1014;
+            background: #0b1014;
             color: white;
         }
 
-
-        /* =========================
-           HERO SECTION
-           ========================= */
-
         .compare-hero {
-            min-height: 280px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
+            padding: 60px 20px;
             text-align: center;
-
-            padding: 50px 20px;
-
-            background:
-                linear-gradient(
-                    rgba(10, 10, 10, 0.70),
-                    rgba(10, 10, 10, 0.85)
-                ),
-                url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80");
-
+            background: linear-gradient(rgba(10,10,10,.7), rgba(10,10,10,.85)),
+            url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80");
             background-size: cover;
             background-position: center;
         }
 
-
-        .compare-hero p {
+        .compare-hero .hero-label {
             color: #c9a227;
-            letter-spacing: 3px;
             font-size: 13px;
+            letter-spacing: 3px;
             font-weight: bold;
         }
 
-
         .compare-hero h1 {
-            font-size: 48px;
+            font-size: 42px;
             margin: 15px 0;
         }
 
-
-        .compare-hero h1 span {
+        .compare-hero h1 span,
+        .compare-heading h2 span {
             color: #c9a227;
         }
 
-
         .compare-hero-description {
-            color: #dddddd !important;
-            letter-spacing: normal !important;
-            font-size: 16px !important;
-            font-weight: normal !important;
+            color: #ddd;
             max-width: 600px;
             margin: auto;
             line-height: 1.7;
         }
 
-
-        /* =========================
-           COMPARE SECTION
-           ========================= */
-
         .compare-section {
             width: 90%;
-            max-width: 1300px;
-            margin: 70px auto;
+            max-width: 1200px;
+            margin: 50px auto;
         }
-
 
         .compare-heading {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-
         .compare-heading h2 {
-            font-size: 32px;
+            font-size: 30px;
             margin-bottom: 10px;
         }
 
-
         .compare-heading p {
-            color: #aaaaaa;
+            color: #aaa;
         }
-
-
-        /* =========================
-           CAR SELECT SECTION
-           ========================= */
 
         .compare-selection {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+            margin-bottom: 35px;
         }
-
 
         .selected-car {
-            background-color: #12191f;
+            background: #12191f;
             border: 1px solid #283038;
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 10px;
+            padding: 18px;
+            min-width: 0;
         }
 
+        .selected-car label {
+            display: block;
+            color: #c9a227;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .selected-car select {
+            width: 100%;
+            padding: 11px;
+            margin-bottom: 15px;
+            background: #0b1014;
+            color: white;
+            border: 1px solid #c9a227;
+            border-radius: 5px;
+            font-size: 14px;
+        }
 
         .selected-car img {
             width: 100%;
-            height: 250px;
+            height: 210px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 7px;
+            display: block;
         }
-
 
         .selected-car h3 {
-            font-size: 24px;
-            margin: 18px 0 8px;
+            font-size: 21px;
+            margin: 15px 0 8px;
         }
-
 
         .selected-car p {
             color: #c9a227;
-            font-size: 18px;
             font-weight: bold;
-        }
-
-
-        .selected-car small {
-            display: block;
-            color: #999999;
-            margin-top: 8px;
-        }
-
-
-        /* =========================
-           VS SECTION
-           ========================= */
-
-        .compare-wrapper {
-            position: relative;
-        }
-
-
-        .vs-circle {
-            width: 60px;
-            height: 60px;
-
-            background-color: #c9a227;
-            color: #111111;
-
-            border-radius: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
             font-size: 18px;
-            font-weight: bold;
-
-            position: absolute;
-
-            top: 95px;
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            border: 5px solid #0b1014;
+            margin: 0;
         }
-
-
-        /* =========================
-           COMPARISON TABLE
-           ========================= */
 
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-
-            background-color: #12191f;
-
+            background: #12191f;
             border: 1px solid #283038;
-            border-radius: 10px;
-
-            overflow: hidden;
         }
-
 
         .comparison-table th {
-            padding: 20px;
-
-            background-color: #171f26;
-
+            padding: 15px 12px;
+            background: #171f26;
             color: #c9a227;
-
-            font-size: 16px;
-
             text-align: center;
+            overflow-wrap: anywhere;
         }
-
 
         .comparison-table th:first-child {
             text-align: left;
         }
 
-
         .comparison-table td {
-            padding: 18px 20px;
-
+            padding: 14px 12px;
             border-top: 1px solid #283038;
-
             text-align: center;
-
-            color: #cccccc;
+            color: #ccc;
+            overflow-wrap: anywhere;
         }
-
 
         .comparison-table td:first-child {
             text-align: left;
-
             color: white;
-
             font-weight: bold;
         }
-
 
         .comparison-table tr:hover {
-            background-color: #171f26;
+            background: #171f26;
         }
-
-
-        /* =========================
-           WINNER HIGHLIGHT
-           ========================= */
-
-        .better-value {
-            color: #5ecb77 !important;
-            font-weight: bold;
-        }
-
-
-        /* =========================
-           SUMMARY
-           ========================= */
 
         .comparison-summary {
-            margin-top: 50px;
-
-            background-color: #12191f;
-
+            margin-top: 35px;
+            background: #12191f;
             border: 1px solid #283038;
-
-            padding: 35px;
-
-            border-radius: 12px;
+            padding: 25px;
+            border-radius: 10px;
         }
-
 
         .comparison-summary h2 {
-            margin-bottom: 15px;
+            margin-top: 0;
         }
-
 
         .comparison-summary h2 span {
             color: #c9a227;
         }
 
-
         .comparison-summary p {
-            color: #b9b9b9;
+            color: #bbb;
             line-height: 1.8;
         }
-
-
-        /* =========================
-           BUTTONS
-           ========================= */
 
         .compare-buttons {
             display: flex;
             justify-content: center;
-            gap: 20px;
-
-            margin-top: 35px;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
         }
-
 
         .compare-buttons a {
-            padding: 14px 28px;
-
+            padding: 12px 22px;
             text-decoration: none;
-
             border-radius: 5px;
-
             font-weight: bold;
+            text-align: center;
         }
-
 
         .primary-compare-btn {
-            background-color: #c9a227;
-            color: #111111;
+            background: #c9a227;
+            color: #0b1014;
         }
-
 
         .secondary-compare-btn {
             border: 1px solid #c9a227;
             color: #c9a227;
         }
 
-
-        /* =========================
-           RESPONSIVE
-           ========================= */
-
         @media (max-width: 700px) {
-
             .compare-hero h1 {
-                font-size: 34px;
+                font-size: 32px;
             }
-
 
             .compare-selection {
                 grid-template-columns: 1fr;
             }
 
-
-            .vs-circle {
-                top: 50%;
-            }
-
-
             .comparison-table {
-                font-size: 13px;
+                font-size: 12px;
             }
-
 
             .comparison-table th,
             .comparison-table td {
-                padding: 12px 8px;
+                padding: 10px 6px;
             }
 
-
-            .compare-buttons {
-                flex-direction: column;
+            .comparison-summary {
+                padding: 18px;
             }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
+    <!-- NAVBAR -->
 
-    <!-- ================= NAVBAR ================= -->
+    <div class="navbar">
 
+        <div class="container navbar-inner">
 
-<div class="navbar">
+            <a href="index.html" class="logo">
+                VELO<span>CIA</span>
+            </a>
 
-    <div class="container navbar-inner">
+            <div class="nav-links">
 
-        <!-- LOGO -->
+                <a href="index.html">Home</a>
 
-        <a href="index.html" class="logo">
-            VELO<span>CIA</span>
-        </a>
-
-
-        <!-- NAVIGATION -->
-
-        <div class="nav-links">
-
-            <!-- HOME -->
-
-            <a href="index.html">Home</a>
-
-
-            <!-- EXPLORE CARS DROPDOWN -->
-
-            <div class="dropdown">
-
-                <a href="cars.html" class="dropdown-title">
-                    Explore Cars <span>▾</span>
-                </a>
-
-
-                <div class="dropdown-menu">
-
-                    <a href="cars.html">
-                        All Cars
+                <div class="dropdown">
+                    <a href="cars.html" class="dropdown-title">
+                        Explore Cars ▾
                     </a>
 
-                    <a href="brands.html">
-                        Brands
-                    </a>
-
-                    <a href="compare.html">
-                        Compare Cars
-                    </a>
-
+                    <div class="dropdown-menu">
+                        <a href="cars.html">All Cars</a>
+                        <a href="brands.html">Brands</a>
+                        <a href="compare.html">Compare Cars</a>
+                    </div>
                 </div>
+
+                <div class="dropdown mobile-hide">
+                    <a href="#" class="dropdown-title">More ▾</a>
+
+                    <div class="dropdown-menu">
+                        <a href="wishlist.html">Wishlist</a>
+                        <a href="reviews.html">Reviews</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+
+                <a href="login.html" class="mobile-hide">Login</a>
 
             </div>
 
-
-            <!-- MORE DROPDOWN (hidden on mobile navbar row, moves into hamburger menu) -->
-
-            <div class="dropdown mobile-hide">
-
-                <a href="#" class="dropdown-title">
-                    More <span>▾</span>
-                </a>
-
-
-                <div class="dropdown-menu">
-
-                    <a href="wishlist.html">
-                        Wishlist
-                    </a>
-
-                    <a href="reviews.html">
-                        Reviews
-                    </a>
-
-                    <a href="about.html">
-                        About Us
-                    </a>
-
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- LOGIN (hidden on mobile navbar row, moves into hamburger menu) -->
-
-            <a href="login.html" class="mobile-hide">
-                Login
+            <a href="test-drive.html" class="btn btn-primary desktop-only">
+                Book a Test Drive
             </a>
 
         </div>
 
+        <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
 
-        <!-- TEST DRIVE BUTTON -->
+        <label for="menuCheckbox" class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
 
-        <a href="test-drive.html"
-           class="btn btn-primary desktop-only">
-
-            Book a Test Drive
-
-        </a>
+        <div class="mobile-menu">
+            <a href="cars.html">All Cars</a>
+            <a href="brands.html">Brands</a>
+            <a href="compare.html">Compare Cars</a>
+            <a href="wishlist.html">Wishlist</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html">Login / Sign Up</a>
+        </div>
 
     </div>
 
-    <!-- hamburger menu button, only shows on mobile (pure CSS, no JS) -->
-    <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
-    <label for="menuCheckbox" class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </label>
-
-  <!-- mobile dropdown menu — only the "More" items + Login live here,
-       since Home and Explore Cars stay visible on the navbar itself -->
-  <div class="mobile-menu">
-    <a href="wishlist.html">Wishlist</a>
-    <a href="reviews.html">Reviews</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="login.html">Login / Sign Up</a>
-  </div>
-</div>
-
-
-
-
-    <!-- ================= HERO ================= -->
+    <!-- HERO SECTION -->
 
     <section class="compare-hero">
 
-        <div>
+        <p class="hero-label">COMPARE BEFORE YOU DRIVE</p>
 
-            <p>COMPARE BEFORE YOU DRIVE</p>
+        <h1>Find The <span>Perfect Car</span></h1>
 
-            <h1>
-                Find The <span>Perfect Car</span>
-            </h1>
-
-            <p class="compare-hero-description">
-                Compare two cars side by side and discover which one
-                is the perfect choice for you.
-            </p>
-
-        </div>
+        <p class="compare-hero-description">
+            Compare two cars side by side and discover which one
+            is the perfect choice for you.
+        </p>
 
     </section>
 
-
-
-    <!-- ================= COMPARE SECTION ================= -->
+    <!-- COMPARE SECTION -->
 
     <section class="compare-section">
 
-
         <div class="compare-heading">
 
-            <h2>BMW M4 Competition VS Porsche 911</h2>
+            <h2 id="compare-title">Compare Your Cars</h2>
 
-            <p>
-                Compare important specifications and features.
-            </p>
+            <p>Select two different cars to compare their specifications.</p>
 
         </div>
 
+        <!-- CAR SELECTION -->
 
-        <div class="compare-wrapper">
+        <div class="compare-selection">
 
+            <div class="selected-car">
 
-            <!-- ================= CAR CARDS ================= -->
+                <label for="car1">Select First Car</label>
 
-            <div class="compare-selection">
+                <select id="car1">
+                    <option value="bmw">BMW M4 Competition</option>
+                    <option value="porsche">Porsche 911</option>
+                    <option value="audi">Audi RS7 Sportback</option>
+                </select>
 
-
-                <!-- CAR 1 -->
-
-                <div class="selected-car">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=900&q=80"
-                        alt="BMW M4 Competition">
-
-                    <h3>BMW M4 Competition</h3>
-
-                    <p>₹1.53 Crore</p>
-
-                    <small>BMW • Petrol • Automatic</small>
-
-                </div>
-
-
-
-                <!-- CAR 2 -->
-
-                <div class="selected-car">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80"
-                        alt="Porsche 911">
-
-                    <h3>Porsche 911</h3>
-
-                    <p>₹1.99 Crore</p>
-
-                    <small>Porsche • Petrol • Automatic</small>
-
-                </div>
-
+                <div id="car1-details"></div>
 
             </div>
 
+            <div class="selected-car">
 
-            <!-- VS CIRCLE -->
+                <label for="car2">Select Second Car</label>
 
-            <div class="vs-circle">
-                VS
+                <select id="car2">
+                    <option value="porsche">Porsche 911</option>
+                    <option value="bmw">BMW M4 Competition</option>
+                    <option value="audi">Audi RS7 Sportback</option>
+                </select>
+
+                <div id="car2-details"></div>
+
             </div>
-
 
         </div>
 
-
-
-        <!-- ================= COMPARISON TABLE ================= -->
+        <!-- COMPARISON TABLE -->
 
         <table class="comparison-table">
 
-
             <tr>
-
                 <th>Specification</th>
-
-                <th>BMW M4 Competition</th>
-
-                <th>Porsche 911</th>
-
+                <th id="car1-name">BMW M4 Competition</th>
+                <th id="car2-name">Porsche 911</th>
             </tr>
 
-
-
             <tr>
-
                 <td>Price</td>
-
-                <td class="better-value">₹1.53 Crore</td>
-
-                <td>₹1.99 Crore</td>
-
+                <td id="car1-price"></td>
+                <td id="car2-price"></td>
             </tr>
 
-
             <tr>
-
                 <td>Engine</td>
-
-                <td>3.0L Twin-Turbo</td>
-
-                <td>3.0L Twin-Turbo</td>
-
+                <td id="car1-engine"></td>
+                <td id="car2-engine"></td>
             </tr>
 
-
             <tr>
-
                 <td>Horsepower</td>
-
-                <td class="better-value">510 HP</td>
-
-                <td>385 HP</td>
-
+                <td id="car1-hp"></td>
+                <td id="car2-hp"></td>
             </tr>
 
-
             <tr>
-
                 <td>Fuel Type</td>
-
-                <td>Petrol</td>
-
-                <td>Petrol</td>
-
+                <td id="car1-fuel"></td>
+                <td id="car2-fuel"></td>
             </tr>
 
-
             <tr>
-
                 <td>Transmission</td>
-
-                <td>8-Speed Automatic</td>
-
-                <td>8-Speed Automatic</td>
-
+                <td id="car1-transmission"></td>
+                <td id="car2-transmission"></td>
             </tr>
 
-
             <tr>
-
                 <td>Top Speed</td>
-
-                <td>250 km/h</td>
-
-                <td class="better-value">293 km/h</td>
-
+                <td id="car1-speed"></td>
+                <td id="car2-speed"></td>
             </tr>
-
-
-            <tr>
-
-                <td>Mileage</td>
-
-                <td>9.7 km/l</td>
-
-                <td class="better-value">10.6 km/l</td>
-
-            </tr>
-
-
-            <tr>
-
-                <td>Seating Capacity</td>
-
-                <td class="better-value">4 People</td>
-
-                <td>2 People</td>
-
-            </tr>
-
-
-            <tr>
-
-                <td>Safety Rating</td>
-
-                <td>5 Star</td>
-
-                <td>5 Star</td>
-
-            </tr>
-
-
-            <tr>
-
-                <td>Wheel Type</td>
-
-                <td>19-inch Alloy Wheels</td>
-
-                <td>20-inch Alloy Wheels</td>
-
-            </tr>
-
-
-            <tr>
-
-                <td>Drive Type</td>
-
-                <td>Rear Wheel Drive</td>
-
-                <td>Rear Wheel Drive</td>
-
-            </tr>
-
-
-            <tr>
-
-                <td>Body Type</td>
-
-                <td>Sports Coupe</td>
-
-                <td>Sports Coupe</td>
-
-            </tr>
-
 
         </table>
 
-
-
-        <!-- ================= SUMMARY ================= -->
+        <!-- SUMMARY -->
 
         <div class="comparison-summary">
 
-            <h2>
-                Which Car Should You <span>Choose?</span>
-            </h2>
+            <h2>Which Car Should You <span>Choose?</span></h2>
 
-            <p>
-                The BMW M4 Competition is a great choice for users
-                looking for powerful performance, practicality and
-                four-seat comfort. The Porsche 911 is ideal for users
-                who prefer iconic sports-car design and a higher top
-                speed.
+            <p id="comparison-result">
+                Select two cars to see their specifications and compare them.
             </p>
-
 
             <div class="compare-buttons">
 
                 <a href="cars.html" class="primary-compare-btn">
                     Explore More Cars
                 </a>
-
 
                 <a href="index.html" class="secondary-compare-btn">
                     Back to Home
@@ -784,56 +433,73 @@
 
         </div>
 
-
     </section>
 
-
-
-    <!-- ================= FOOTER ================= -->
+    <!-- FOOTER -->
 
     <div class="footer" id="contact">
-  <div class="container footer-grid">
-    <div class="footer-col footer-brand">
-      <div class="logo">VELO<span>CIA</span></div>
-      <p>The showroom, reimagined online. Compare, shortlist and get ready to drive.</p>
-      <div class="newsletter">
-        <input type="email" placeholder="Your email address">
-        <button type="submit" class="btn btn-outline">Subscribe</button>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Explore</h4>
-      <a href="#launches">New Launches</a>
-      <a href="#featured">Featured Cars</a>
-      <a href="#brands">Popular Brands</a>
-      <a href="#poll">Poll</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#">About Us</a>
-      <a href="#">Careers</a>
-      <a href="#">Press</a>
-      <a href="#">Dealer Login</a>
-    </div>
-    <div class="footer-col">
-      <h4>Get in Touch</h4>
-      <a href="tel:+911234567890">+91 12345 67890</a>
-      <a href="mailto:hello@velocia.example">hello@velocia.example</a>
-      <div class="social-row">
-        <a href="#">IG</a>
-        <a href="#">YT</a>
-        <a href="#">X</a>
-        <a href="#">FB</a>
-      </div>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <p>&copy; 2026 VELOCIA. Built as a student project.</p>
-    <p>Privacy · Terms · Sitemap</p>
-  </div>
-</div>
 
+        <div class="container footer-grid">
+
+            <div class="footer-col footer-brand">
+
+                <div class="logo">VELO<span>CIA</span></div>
+
+                <p>
+                    The showroom, reimagined online.
+                    Compare, shortlist and get ready to drive.
+                </p>
+
+                <div class="newsletter">
+                    <input type="email" placeholder="Your email address">
+                    <button type="button" class="btn btn-outline">
+                        Subscribe
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="cars.html">All Cars</a>
+                <a href="brands.html">Popular Brands</a>
+                <a href="compare.html">Compare Cars</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="login.html">Login</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Get in Touch</h4>
+                <a href="tel:+911234567890">+91 12345 67890</a>
+                <a href="mailto:hello@velocia.example">
+                    hello@velocia.example
+                </a>
+
+                <div class="social-row">
+                    <a href="#">IG</a>
+                    <a href="#">YT</a>
+                    <a href="#">X</a>
+                    <a href="#">FB</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; 2026 VELOCIA. Built as a student project.</p>
+            <p>Privacy · Terms · Sitemap</p>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="compare.js"></script>
 
 </body>
-
 </html>

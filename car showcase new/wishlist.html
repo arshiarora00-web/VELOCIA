@@ -2,773 +2,367 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>My Wishlist | VELOCIA</title>
 
     <link rel="stylesheet" href="style.css">
 
-
     <style>
-
-        /* =========================
-           WISHLIST PAGE
-           ========================= */
-
         body {
-            background-color: #0b1014;
+            background: #0b1014;
             color: white;
         }
 
-
-        /* =========================
-           HERO SECTION
-           ========================= */
-
         .wishlist-hero {
-            min-height: 280px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
             padding: 50px 20px;
-
-            background:
-                linear-gradient(
-                    rgba(10, 10, 10, 0.70),
-                    rgba(10, 10, 10, 0.85)
-                ),
-                url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80");
-
+            text-align: center;
+            background: linear-gradient(rgba(11,16,20,.8), rgba(11,16,20,.9)),
+            url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80");
             background-size: cover;
             background-position: center;
         }
 
+        .wishlist-hero h1 {
+            font-size: 42px;
+            margin: 15px 0;
+        }
+
+        .wishlist-hero span,
+        .wishlist-heading span {
+            color: #c9a227;
+        }
 
         .wishlist-hero p {
+            color: #ccc;
+        }
+
+        .wishlist-hero .hero-label {
             color: #c9a227;
             letter-spacing: 3px;
             font-size: 13px;
             font-weight: bold;
         }
 
-
-        .wishlist-hero h1 {
-            font-size: 48px;
-            margin: 15px 0;
-        }
-
-
-        .wishlist-hero h1 span {
-            color: #c9a227;
-        }
-
-
-        .wishlist-description {
-            color: #dddddd !important;
-            letter-spacing: normal !important;
-            font-size: 16px !important;
-            font-weight: normal !important;
-            max-width: 600px;
-            margin: auto;
-            line-height: 1.7;
-        }
-
-
-        /* =========================
-           WISHLIST SECTION
-           ========================= */
-
         .wishlist-section {
             width: 90%;
             max-width: 1300px;
-            margin: 70px auto;
+            margin: 50px auto;
         }
-
 
         .wishlist-heading {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
-
 
         .wishlist-heading h2 {
             font-size: 32px;
             margin-bottom: 10px;
         }
 
-
-        .wishlist-heading h2 span {
-            color: #c9a227;
-        }
-
-
         .wishlist-heading p {
-            color: #aaaaaa;
+            color: #aaa;
         }
-
-
-        /* =========================
-           WISHLIST GRID
-           ========================= */
 
         .wishlist-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
         }
-
-
-        /* =========================
-           WISHLIST CARD
-           ========================= */
 
         .wishlist-card {
-            background-color: #12191f;
+            background: #12191f;
             border: 1px solid #283038;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            transition: 0.3s;
         }
-
-
-        .wishlist-card:hover {
-            transform: translateY(-8px);
-            border-color: #c9a227;
-        }
-
-
-        .wishlist-image {
-            position: relative;
-        }
-
 
         .wishlist-image img {
             width: 100%;
-            height: 220px;
+            height: 210px;
             object-fit: cover;
             display: block;
         }
 
-
-        /* HEART */
-
-        .wishlist-heart {
-            position: absolute;
-
-            top: 15px;
-            right: 15px;
-
-            width: 45px;
-            height: 45px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background-color: #0b1014;
-
-            border-radius: 50%;
-
-            color: #c9a227;
-
-            font-size: 25px;
-
-            border: 1px solid #c9a227;
-        }
-
-
-        /* CARD INFORMATION */
-
         .wishlist-info {
-            padding: 22px;
+            padding: 20px;
         }
-
 
         .wishlist-company {
             color: #c9a227;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
-            letter-spacing: 2px;
         }
 
-
         .wishlist-info h3 {
-            font-size: 23px;
+            font-size: 22px;
             margin: 10px 0;
         }
 
-
         .wishlist-price {
-            color: white;
             font-size: 18px;
             font-weight: bold;
-            margin-bottom: 18px;
         }
-
-
-        /* SPECS */
 
         .wishlist-specs {
             display: flex;
-            gap: 8px;
             flex-wrap: wrap;
-
-            margin-bottom: 22px;
+            gap: 8px;
+            margin: 15px 0;
         }
-
 
         .wishlist-specs span {
-            font-size: 12px;
-
-            color: #aaaaaa;
-
             border: 1px solid #283038;
-
-            padding: 7px 10px;
-
+            padding: 7px 9px;
             border-radius: 4px;
+            color: #aaa;
+            font-size: 12px;
         }
-
-
-        /* BUTTONS */
 
         .wishlist-buttons {
             display: flex;
-            gap: 12px;
+            gap: 10px;
+            margin-top: 18px;
         }
 
+        .wishlist-buttons a,
+        .wishlist-buttons button {
+            flex: 1;
+            min-width: 0;
+            padding: 11px 8px;
+            border-radius: 6px;
+            text-align: center;
+            text-decoration: none;
+            font-family: inherit;
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
 
         .view-details-btn {
-            flex: 1;
-
-            background-color: #c9a227;
-
-            color: #111111;
-
-            text-align: center;
-
-            text-decoration: none;
-
-            padding: 12px;
-
+            background: #c9a227;
+            color: #0b1014;
+            border: 1px solid #c9a227;
             font-weight: bold;
-
-            border-radius: 5px;
         }
-
 
         .remove-btn {
-            padding: 12px 16px;
-
-            border: 1px solid #c9a227;
-
+            background: #0b1014;
             color: #c9a227;
-
-            text-decoration: none;
-
-            border-radius: 5px;
-
-            font-size: 13px;
-
-            transition: 0.3s;
+            border: 1px solid #c9a227;
         }
-
 
         .remove-btn:hover {
-            background-color: #c9a227;
-            color: #111111;
+            background: #c9a227;
+            color: #0b1014;
         }
 
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 30px 15px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-        /* =========================
-           EMPTY WISHLIST
-           ========================= */
+        .empty-state h3 {
+            color: #c9a227;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .empty-state p {
+            color: #aaa;
+            margin-bottom: 22px;
+        }
+
+        .empty-state .btn {
+            display: inline-block;
+            background: #c9a227;
+            color: #0b1014;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
         .wishlist-note {
-            margin-top: 50px;
-
-            padding: 25px;
-
             text-align: center;
-
-            background-color: #12191f;
-
-            border: 1px solid #283038;
-
-            border-radius: 10px;
-
-            color: #aaaaaa;
+            margin-top: 35px;
+            padding: 20px;
+            color: #aaa;
         }
-
 
         .wishlist-note a {
             color: #c9a227;
             text-decoration: none;
-            font-weight: bold;
         }
 
-
-        /* =========================
-           RESPONSIVE DESIGN
-           ========================= */
-
-        @media (max-width: 1000px) {
-
+        @media (max-width: 900px) {
             .wishlist-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
-
         }
 
-
-        @media (max-width: 650px) {
-
-            .wishlist-hero h1 {
-                font-size: 34px;
-            }
-
-
+        @media (max-width: 600px) {
             .wishlist-grid {
                 grid-template-columns: 1fr;
             }
 
-
-            .wishlist-buttons {
-                flex-direction: column;
+            .wishlist-hero h1 {
+                font-size: 32px;
             }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="container navbar-inner">
 
-    <!-- ================= NAVBAR ================= -->
-
-    <!-- ================= NAVBAR ================= -->
-
-<div class="navbar">
-
-    <div class="container navbar-inner">
-
-        <!-- LOGO -->
-
-        <a href="index.html" class="logo">
-            VELO<span>CIA</span>
-        </a>
-
-
-        <!-- NAVIGATION -->
-
-        <div class="nav-links">
-
-            <!-- HOME -->
-
-            <a href="index.html">Home</a>
-
-
-            <!-- EXPLORE CARS DROPDOWN -->
-
-            <div class="dropdown">
-
-                <a href="cars.html" class="dropdown-title">
-                    Explore Cars <span>▾</span>
-                </a>
-
-
-                <div class="dropdown-menu">
-
-                    <a href="cars.html">
-                        All Cars
-                    </a>
-
-                    <a href="brands.html">
-                        Brands
-                    </a>
-
-                    <a href="compare.html">
-                        Compare Cars
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- MORE DROPDOWN -->
-
-            <div class="dropdown">
-
-                <a href="#" class="dropdown-title">
-                    More <span>▾</span>
-                </a>
-
-
-                <div class="dropdown-menu">
-
-                    <a href="wishlist.html">
-                        Wishlist
-                    </a>
-
-                    <a href="reviews.html">
-                        Reviews
-                    </a>
-
-                    <a href="about.html">
-                        About Us
-                    </a>
-
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- LOGIN -->
-
-            <a href="login.html">
-                Login
+            <a href="index.html" class="logo">
+                VELO<span>CIA</span>
             </a>
 
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+
+                <div class="dropdown">
+                    <a href="cars.html" class="dropdown-title">
+                        Explore Cars ▾
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <a href="cars.html">All Cars</a>
+                        <a href="brands.html">Brands</a>
+                        <a href="compare.html">Compare Cars</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <a href="#" class="dropdown-title">More ▾</a>
+
+                    <div class="dropdown-menu">
+                        <a href="wishlist.html">Wishlist</a>
+                        <a href="reviews.html">Reviews</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Contact Us</a>
+                    </div>
+                </div>
+
+                <a href="login.html">Login</a>
+            </div>
+
+            <a href="test-drive.html" class="btn btn-primary desktop-only">
+                Book a Test Drive
+            </a>
         </div>
 
+        <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
 
-        <!-- TEST DRIVE BUTTON -->
+        <label for="menuCheckbox" class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
 
-        <a href="test-drive.html"
-           class="btn btn-primary desktop-only">
-
-            Book a Test Drive
-
-        </a>
-
+        <div class="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="cars.html">All Cars</a>
+            <a href="brands.html">Brands</a>
+            <a href="compare.html">Compare Cars</a>
+            <a href="wishlist.html">Wishlist</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html">Login / Sign Up</a>
+        </div>
     </div>
 
-    <!-- hamburger menu button, only shows on mobile (pure CSS, no JS) -->
-    <input type="checkbox" id="menuCheckbox" class="menu-checkbox">
-    <label for="menuCheckbox" class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </label>
-
-  <!-- mobile dropdown menu -->
-  <div class="mobile-menu">
-    <a href="index.html">Home</a>
-    <a href="cars.html">All Cars</a>
-    <a href="brands.html">Brands</a>
-    <a href="compare.html">Compare Cars</a>
-    <a href="wishlist.html">Wishlist</a>
-    <a href="reviews.html">Reviews</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="login.html">Login / Sign Up</a>
-  </div>
-</div>
-
-
-
-
-    <!-- ================= HERO ================= -->
-
+    <!-- HERO -->
     <section class="wishlist-hero">
+        <p class="hero-label">YOUR FAVOURITE CARS</p>
 
-        <div>
+        <h1>My <span>Wishlist</span></h1>
 
-            <p>YOUR FAVOURITE CARS</p>
-
-            <h1>
-                My <span>Wishlist</span>
-            </h1>
-
-            <p class="wishlist-description">
-                Keep track of your favourite cars and explore their
-                specifications whenever you want.
-            </p>
-
-        </div>
-
+        <p>
+            Keep track of your favourite cars and explore their
+            specifications whenever you want.
+        </p>
     </section>
 
-
-
-    <!-- ================= WISHLIST SECTION ================= -->
-
+    <!-- WISHLIST -->
     <section class="wishlist-section">
 
-
         <div class="wishlist-heading">
-
             <h2>Saved <span>Cars</span></h2>
-
-            <p>
-                Your favourite cars are saved here.
-            </p>
-
+            <p>Your favourite cars are saved here.</p>
         </div>
 
-
-
-        <!-- ================= WISHLIST CAR GRID ================= -->
-
-        <div class="wishlist-grid">
-
-
-            <!-- CAR 1 -->
-
-            <div class="wishlist-card">
-
-                <div class="wishlist-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=900&q=80"
-                        alt="BMW M4 Competition">
-
-                    <div class="wishlist-heart">
-                        ♥
-                    </div>
-
-                </div>
-
-
-                <div class="wishlist-info">
-
-                    <p class="wishlist-company">
-                        BMW
-                    </p>
-
-                    <h3>BMW M4 Competition</h3>
-
-                    <p class="wishlist-price">
-                        ₹1.53 Crore
-                    </p>
-
-
-                    <div class="wishlist-specs">
-
-                        <span>Petrol</span>
-
-                        <span>Automatic</span>
-
-                        <span>510 HP</span>
-
-                    </div>
-
-
-                    <div class="wishlist-buttons">
-
-                        <a href="car-details.html" class="view-details-btn">
-                            View Details
-                        </a>
-
-                        <a href="#" class="remove-btn">
-                            Remove
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CAR 2 -->
-
-            <div class="wishlist-card">
-
-                <div class="wishlist-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80"
-                        alt="Porsche 911">
-
-                    <div class="wishlist-heart">
-                        ♥
-                    </div>
-
-                </div>
-
-
-                <div class="wishlist-info">
-
-                    <p class="wishlist-company">
-                        PORSCHE
-                    </p>
-
-                    <h3>Porsche 911</h3>
-
-                    <p class="wishlist-price">
-                        ₹1.99 Crore
-                    </p>
-
-
-                    <div class="wishlist-specs">
-
-                        <span>Petrol</span>
-
-                        <span>Automatic</span>
-
-                        <span>385 HP</span>
-
-                    </div>
-
-
-                    <div class="wishlist-buttons">
-
-                        <a href="car-details.html" class="view-details-btn">
-                            View Details
-                        </a>
-
-                        <a href="#" class="remove-btn">
-                            Remove
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CAR 3 -->
-
-            <div class="wishlist-card">
-
-                <div class="wishlist-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=900&q=80"
-                        alt="Audi RS7">
-
-                    <div class="wishlist-heart">
-                        ♥
-                    </div>
-
-                </div>
-
-
-                <div class="wishlist-info">
-
-                    <p class="wishlist-company">
-                        AUDI
-                    </p>
-
-                    <h3>Audi RS7 Sportback</h3>
-
-                    <p class="wishlist-price">
-                        ₹2.23 Crore
-                    </p>
-
-
-                    <div class="wishlist-specs">
-
-                        <span>Petrol</span>
-
-                        <span>Automatic</span>
-
-                        <span>630 HP</span>
-
-                    </div>
-
-
-                    <div class="wishlist-buttons">
-
-                        <a href="car-details.html" class="view-details-btn">
-                            View Details
-                        </a>
-
-                        <a href="#" class="remove-btn">
-                            Remove
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- ================= NOTE ================= -->
+        <div class="wishlist-grid"></div>
 
         <div class="wishlist-note">
-
             Want to explore more cars?
-
-            <a href="cars.html">
-                Explore All Cars →
-            </a>
-
+            <a href="cars.html">Explore All Cars →</a>
         </div>
-
 
     </section>
 
-
-
-    <!-- ================= FOOTER ================= -->
-
+    <!-- FOOTER -->
     <div class="footer" id="contact">
-  <div class="container footer-grid">
-    <div class="footer-col footer-brand">
-      <div class="logo">VELO<span>CIA</span></div>
-      <p>The showroom, reimagined online. Compare, shortlist and get ready to drive.</p>
-      <div class="newsletter">
-        <input type="email" placeholder="Your email address">
-        <button type="submit" class="btn btn-outline">Subscribe</button>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Explore</h4>
-      <a href="#launches">New Launches</a>
-      <a href="#featured">Featured Cars</a>
-      <a href="#brands">Popular Brands</a>
-      <a href="#poll">Poll</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#">About Us</a>
-      <a href="#">Careers</a>
-      <a href="#">Press</a>
-      <a href="#">Dealer Login</a>
-    </div>
-    <div class="footer-col">
-      <h4>Get in Touch</h4>
-      <a href="tel:+911234567890">+91 12345 67890</a>
-      <a href="mailto:hello@velocia.example">hello@velocia.example</a>
-      <div class="social-row">
-        <a href="#">IG</a>
-        <a href="#">YT</a>
-        <a href="#">X</a>
-        <a href="#">FB</a>
-      </div>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <p>&copy; 2026 VELOCIA. Built as a student project.</p>
-    <p>Privacy · Terms · Sitemap</p>
-  </div>
-</div>
+        <div class="container footer-grid">
 
+            <div class="footer-col footer-brand">
+                <div class="logo">VELO<span>CIA</span></div>
+
+                <p>
+                    The showroom, reimagined online. Compare,
+                    shortlist and get ready to drive.
+                </p>
+
+                <div class="newsletter">
+                    <input type="email" placeholder="Your email address">
+                    <button type="button" class="btn btn-outline">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="cars.html">All Cars</a>
+                <a href="brands.html">Popular Brands</a>
+                <a href="compare.html">Compare Cars</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="login.html">Login</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Get in Touch</h4>
+                <a href="tel:+911234567890">+91 12345 67890</a>
+                <a href="mailto:hello@velocia.example">
+                    hello@velocia.example
+                </a>
+            </div>
+
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; 2026 VELOCIA. Built as a student project.</p>
+            <p>Privacy · Terms · Sitemap</p>
+        </div>
+    </div>
+
+    <script src="wishlist.js"></script>
 
 </body>
-
 </html>

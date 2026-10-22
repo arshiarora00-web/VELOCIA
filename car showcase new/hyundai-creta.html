@@ -293,7 +293,7 @@
             color: #c7c7c7;
         }
 
-        /* 360 VIEW */
+        /* INTERACTIVE 360-STYLE CAR VIEW */
 
         .view-360 {
             background-color: #12191f;
@@ -303,23 +303,58 @@
             text-align: center;
         }
 
-        .view-360 img {
+        .viewer-360 {
             width: 100%;
             max-width: 800px;
             height: 400px;
-            object-fit: cover;
+            margin: auto;
+            overflow: hidden;
             border-radius: 10px;
+            cursor: ew-resize;
+            touch-action: pan-y;
+            background-color: #090d10;
         }
 
-        .rotate-button {
-            display: inline-block;
+        .viewer-360 img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: none;
+            transform-origin: center center;
+            will-change: transform;
+        }
+
+        #creta360Hint {
+            color: #c9a227;
+            margin-top: 18px;
+        }
+
+        .viewer-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
             margin-top: 20px;
-            padding: 14px 25px;
+        }
+
+        .viewer-controls button {
+            padding: 12px 20px;
             background-color: #c9a227;
             color: #111111;
-            text-decoration: none;
-            font-weight: bold;
+            border: none;
             border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .viewer-controls button:hover {
+            background-color: #e0bd4f;
+            transform: translateY(-2px);
         }
 
         /* RATINGS */
@@ -450,7 +485,35 @@
 
         }
 
+        .viewer-360 {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            background: radial-gradient(circle, #293139, #0b1014 75%);
+            border: 1px solid rgba(201, 162, 39, 0.35);
+            cursor: grab;
+            user-select: none;
+        }
+
+        .viewer-360 img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+            will-change: transform;
+            transform-style: preserve-3d;
+        }
+
         @media (max-width: 650px) {
+
+            .viewer-360 {
+                height: 250px;
+            }
+
+            .viewer-controls button {
+                padding: 10px 14px;
+                font-size: 13px;
+            }
 
             .car-name {
                 font-size: 32px;
@@ -930,7 +993,7 @@
     </section>
 
 
-    <!-- 360 VIEW -->
+    <!-- INTERACTIVE 360-STYLE VIEW -->
 
     <section class="details-section">
 
@@ -940,14 +1003,21 @@
 
         <div class="view-360">
 
-            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80"
-                alt="Hyundai Creta">
+            <div class="viewer-360" id="car360Viewer">
+                <img
+                    id="car360Image"
+                    src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80"
+                    alt="Hyundai Creta interactive view"
+                    draggable="false">
+            </div>
 
-            <p>Explore the Hyundai Creta from different angles.</p>
+            <p id="car360Hint">Drag left or right to move the view. Use the buttons to zoom.</p>
 
-            <a href="#" class="rotate-button">
-                ↻ Rotate Car
-            </a>
+            <div class="viewer-controls">
+                <button type="button" id="car360ZoomIn">+ Zoom In</button>
+                <button type="button" id="car360ZoomOut">− Zoom Out</button>
+                <button type="button" id="car360Reset">Reset View</button>
+            </div>
 
         </div>
 
@@ -1091,6 +1161,8 @@
     <p>Privacy · Terms · Sitemap</p>
   </div>
 </div>
+
+    <script src="car-360.js"></script>
 
 </body>
 
