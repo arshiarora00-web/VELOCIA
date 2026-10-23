@@ -1,15 +1,18 @@
+
 document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll(".viewer-360").forEach(function (viewer) {
 
-        let image = viewer.querySelector("img");
+        const image = viewer.querySelector("img");
+        const section = viewer.closest(".view-360");
 
-        if (!image) return;
+        if (!image || !section) return;
 
-        let zoomIn = document.querySelector("#car360ZoomIn");
-        let zoomOut = document.querySelector("#car360ZoomOut");
-        let reset = document.querySelector("#car360Reset");
-        let hint = document.querySelector("#car360Hint");
+        // Supports both class-based and ID-based buttons
+        const zoomIn = section.querySelector(".car360ZoomIn, #car360ZoomIn");
+        const zoomOut = section.querySelector(".car360ZoomOut, #car360ZoomOut");
+        const reset = section.querySelector(".car360Reset, #car360Reset");
+        const hint = section.querySelector(".car360Hint, #car360Hint");
 
         let zoom = 1;
         let rotation = 0;
@@ -17,33 +20,37 @@ document.addEventListener("DOMContentLoaded", function () {
         let startX = 0;
         let startRotation = 0;
 
-        image.style.transition = "transform 0.12s ease-out";
-        image.style.transformOrigin = "center center";
-
         function updateView() {
             image.style.transform =
-                "perspective(1000px) rotateY(" + rotation +
-                "deg) scale(" + zoom + ")";
+                "perspective(1000px) rotateY(" +
+                rotation + "deg) scale(" + zoom + ")";
         }
 
-        // DRAG TO SIMULATE ROTATION
+        // Drag left and right
         viewer.addEventListener("pointerdown", function (event) {
             dragging = true;
             startX = event.clientX;
             startRotation = rotation;
 
             viewer.setPointerCapture(event.pointerId);
-            viewer.style.cursor = "grabbing";
-
             image.style.transition = "none";
+            viewer.style.cursor = "grabbing";
         });
+        
+viewer.addEventListener("wheel", function (event) {
+    event.preventDefault();
+
+    rotation += event.deltaY > 0 ? 10 : -10;
+
+    updateView();
+}, { passive: false });
+
 
         viewer.addEventListener("pointermove", function (event) {
             if (!dragging) return;
 
-            let difference = event.clientX - startX;
-
-            rotation = startRotation + difference * 0.35;
+            rotation = startRotation +
+                (event.clientX - startX) * 0.35;
 
             updateView();
         });
@@ -57,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         viewer.addEventListener("pointerup", stopDragging);
         viewer.addEventListener("pointercancel", stopDragging);
 
-        // ZOOM IN
+        // Zoom In
         if (zoomIn) {
             zoomIn.addEventListener("click", function () {
                 zoom = Math.min(zoom + 0.2, 2.5);
@@ -70,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        // ZOOM OUT
+        // Zoom Out
         if (zoomOut) {
             zoomOut.addEventListener("click", function () {
                 zoom = Math.max(zoom - 0.2, 1);
@@ -83,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        // RESET VIEW
+        // Reset
         if (reset) {
             reset.addEventListener("click", function () {
                 zoom = 1;
@@ -93,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (hint) {
                     hint.textContent =
-                        "Drag to explore the car view";
+                        "Drag left or right to move the view. Use the buttons to zoom.";
                 }
             });
         }
@@ -101,8 +108,11 @@ document.addEventListener("DOMContentLoaded", function () {
         viewer.style.cursor = "grab";
         viewer.style.touchAction = "pan-y";
 
-        updateView();
+        image.draggable = false;
+        image.style.transformOrigin = "center center";
+        image.style.transition = "transform 0.12s ease-out";
 
+        updateView();
     });
 
 });

@@ -969,30 +969,45 @@
     </section>
 
 
-    <!-- 360 VIEW -->
+    <!-- INTERACTIVE 360 VIEW -->
 
-    <section class="details-section">
+<section class="details-section">
 
-        <h2>360° Car View</h2>
+    <h2>360° Car View</h2>
 
-        <div class="section-line"></div>
+    <div class="section-line"></div>
 
-        <div class="view-360">
+    <div class="view-360">
 
-            <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80"
-                alt="Toyota Fortuner">
-
-            <p>
-                Explore the Toyota Fortuner from different angles.
-            </p>
-
-            <a href="#" class="rotate-button">
-                ↻ Rotate Car
-            </a>
-
+        <div class="viewer-360">
+            <img
+                src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80"
+                alt="Toyota Fortuner"
+                draggable="false">
         </div>
 
-    </section>
+        <p class="car360Hint">
+            Drag left or right to move the view.
+            Use the buttons to zoom.
+        </p>
+
+        <div class="viewer-controls">
+            <button type="button" class="car360ZoomIn">
+                + Zoom In
+            </button>
+
+            <button type="button" class="car360ZoomOut">
+                − Zoom Out
+            </button>
+
+            <button type="button" class="car360Reset">
+                Reset View
+            </button>
+        </div>
+
+    </div>
+
+</section>
 
 
     <!-- RATINGS -->
@@ -1140,7 +1155,7 @@
   </div>
 </div>
 
-
+<script src="car-360.js"></script>
 </body>
 
 </html>

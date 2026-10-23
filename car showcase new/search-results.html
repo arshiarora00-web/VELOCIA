@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Velocia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 25px;
+            background: #f5f7fa;
+        }
+
+        h1 {
+            color: #163653;
+        }
+
+        .car-card, .featured-card {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .car-card img, .featured-card img {
+            max-width: 220px;
+            height: auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        #results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="search-results.css">
+</head>
+
+    
+<body>
+
+    <div class="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="logo">
+                VELO<span>CIA</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="cars.html">Explore Cars</a>
+                <a href="compare.html">Compare Cars</a>
+                <a href="about.html">About Us</a>
+            </div>
+
+            <a href="test-drive.html" class="btn btn-primary desktop-only">
+                Book a Test Drive
+            </a>
+        </div>
+    </div>
+
+    <main class="results-page">
+        <div class="results-container">
+
+            <div class="results-top">
+                <div class="results-heading">
+                    <h1>Find Your Perfect Car</h1>
+                    <p>Explore cars that match your preferences.</p>
+                </div>
+
+                <a href="index.html" class="back-btn">
+                    ← Back to Search
+                </a>
+            </div>
+
+            <p id="result-count">Loading cars...</p>
+
+            <div id="results"></div>
+
+        </div>
+    </main>
+
+    <script src="search-results.js"></script>
+</body>
+</html>
+
+

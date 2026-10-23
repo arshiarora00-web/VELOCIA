@@ -1249,34 +1249,45 @@
 
 
 
-    <!-- ================= 360 VIEW ================= -->
+    <!-- INTERACTIVE 360 VIEW -->
 
-    <section class="details-section">
+<section class="details-section">
 
-        <h2>360° Car View</h2>
+    <h2>360° Car View</h2>
 
-        <div class="section-line"></div>
+    <div class="section-line"></div>
 
+    <div class="view-360">
 
-        <div class="view-360">
-
+        <div class="viewer-360">
             <img
                 src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80"
-                alt="Mercedes-Benz C-Class View">
-
-
-            <p>
-                Explore the Mercedes-Benz C-Class from different angles.
-            </p>
-
-
-            <a href="#" class="rotate-button">
-                ↻ Rotate Car
-            </a>
-
+                alt="Mercedes C Class"
+                draggable="false">
         </div>
 
-    </section>
+        <p class="car360Hint">
+            Drag left or right to move the view.
+            Use the buttons to zoom.
+        </p>
+
+        <div class="viewer-controls">
+            <button type="button" class="car360ZoomIn">
+                + Zoom In
+            </button>
+
+            <button type="button" class="car360ZoomOut">
+                − Zoom Out
+            </button>
+
+            <button type="button" class="car360Reset">
+                Reset View
+            </button>
+        </div>
+
+    </div>
+
+</section>
 
 
 
@@ -1439,7 +1450,7 @@
   </div>
 </div>
 
-
+<script src="car-360.js"></script>
 </body>
 
 </html>
