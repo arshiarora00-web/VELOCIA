@@ -1,0 +1,242 @@
+
+/* SEARCH RESULTS PAGE */
+
+.results-page {
+    min-height: 100vh;
+    background-color: var(--midnight);
+    color: var(--frost);
+    padding: 45px 0 70px;
+}
+
+.results-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* TOP SECTION */
+
+.results-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.results-heading h1 {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 500;
+    color: var(--frost);
+    margin-bottom: 8px;
+}
+
+.results-heading p {
+    color: var(--titanium);
+    font-size: 14px;
+}
+
+/* BACK BUTTON */
+
+.back-btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border: 1px solid var(--champagne);
+    border-radius: 4px;
+    color: var(--champagne);
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: var(--champagne);
+    color: var(--midnight);
+}
+
+/* RESULTS COUNT */
+
+#result-count {
+    color: var(--champagne);
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+/* CAR GRID */
+
+#results {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* CAR CARDS */
+
+#results .car-card,
+#results .featured-card {
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--carbon);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+#results .car-card:hover,
+#results .featured-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--champagne);
+}
+
+#results .car-image {
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+    position: relative;
+}
+
+#results .car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#results .car-info {
+    padding: 20px;
+}
+
+#results .car-info h3 {
+    color: var(--frost);
+    font-family: var(--serif);
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+#results .car-meta {
+    color: var(--titanium);
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+#results .car-price {
+    color: var(--titanium);
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+#results .car-price span {
+    color: var(--champagne);
+    font-weight: 700;
+    font-size: 17px;
+}
+
+/* FEATURED CARD DETAILS */
+
+#results .featured-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#results .badge {
+    color: var(--champagne);
+    border: 1px solid var(--champagne);
+    padding: 4px 9px;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+#results .spec-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#results .spec-label {
+    color: var(--titanium);
+    font-size: 11px;
+}
+
+#results .spec-value {
+    color: var(--frost);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* NO RESULTS MESSAGE */
+
+.no-results {
+    grid-column: 1 / -1;
+    padding: 50px 20px;
+    text-align: center;
+    background-color: var(--carbon);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.no-results h2 {
+    font-family: var(--serif);
+    color: var(--champagne);
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.no-results p {
+    color: var(--titanium);
+    font-size: 14px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+    #results {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .results-heading h1 {
+        font-size: 35px;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .results-page {
+        padding: 30px 0 45px;
+    }
+
+    .results-container {
+        padding: 0 16px;
+    }
+
+    .results-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .results-heading h1 {
+        font-size: 32px;
+    }
+
+    #results {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    #results .car-image {
+        height: 200px;
+    }
+
+    #results .car-info {
+        padding: 16px;
+    }
+}
