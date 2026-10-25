@@ -1,4 +1,5 @@
 /* VELOCIA - reviews.html: star selector, validation, localStorage reviews */
+/* VELOCIA - reviews.html: star selector, validation, localStorage reviews */
 (function () {
     'use strict';
     if (window.__velociaReviewsInit) return;
@@ -24,7 +25,9 @@
         '.star-btn:focus-visible{outline:2px solid #c9a227;outline-offset:2px;border-radius:4px}' +
         '.rv-error{color:#ff6b6b;font-size:13px;margin-top:6px}' +
         '.rv-invalid{border-color:#ff6b6b !important}' +
-        '.rv-status{margin-top:16px;color:#7ddc9a;font-size:14px}';
+        '.rv-status{margin-top:16px;color:#7ddc9a;font-size:14px}' +
+        '.rv-delete{margin-top:16px;padding:8px 16px;background:none;border:1px solid #ff6b6b;color:#ff6b6b;border-radius:5px;cursor:pointer;font-size:13px}' +
+        '.rv-delete:hover,.rv-delete:focus-visible{background:#ff6b6b;color:#111}';
     document.head.appendChild(style);
 
     /* ---------- star selector ---------- */
@@ -55,7 +58,7 @@
             b.className = 'star-btn';
             b.setAttribute('role', 'radio');
             b.setAttribute('aria-label', n + (n === 1 ? ' star' : ' stars'));
-            b.textContent = '\u2605';
+            b.textContent = '★';
             b.addEventListener('click', function () { setRating(n, false); });
             b.addEventListener('keydown', function (e) {
                 if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); setRating(Math.min(5, (rating || n - 1) + 1), true); }
@@ -119,6 +122,7 @@
             return Array.isArray(data) ? data : [];
         } catch (e) { return []; }
     }
+    function makeId() { return 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
     function save(list) {
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); return true; }
         catch (e) { return false; }
@@ -170,17 +174,32 @@
         card.appendChild(header);
 
         card.appendChild(el('p', 'review-car-name', r.car));
-        var st = el('div', 'review-stars', '\u2605'.repeat(r.rating) + '\u2606'.repeat(5 - r.rating));
+        var st = el('div', 'review-stars', '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating));
         st.setAttribute('aria-label', r.rating + ' out of 5 stars');
         card.appendChild(st);
         card.appendChild(el('p', '', r.text));
+
+        var del = el('button', 'rv-delete', 'Delete review');
+        del.type = 'button';
+        del.setAttribute('aria-label', 'Delete review by ' + r.name);
+        del.addEventListener('click', function () { deleteReview(r.id); });
+        card.appendChild(del);
         return card;
     }
+    function deleteReview(id) {
+        if (!window.confirm('Delete this review?')) return;
+        save(load().filter(function (r) { return !r || r.id !== id; }));
+        render();
+    }
     function render() {
-        var list = load().filter(function (r) {
+        var stored = load();
+        var changed = false;
+        var list = stored.filter(function (r) {
             return r && typeof r.name === 'string' && typeof r.car === 'string' && typeof r.text === 'string' &&
                 r.rating >= 1 && r.rating <= 5;
         });
+        list.forEach(function (r) { if (!r.id) { r.id = makeId(); changed = true; } });
+        if (changed) save(list);
         document.querySelectorAll('.review-card[data-user-review]').forEach(function (n) { n.remove(); });
         var anchor = heading;
         list.slice().reverse().forEach(function (r) { /* newest first */
@@ -200,6 +219,7 @@
 
         var list = load();
         list.push({
+            id: makeId(),
             name: nameInput.value.trim(),
             car: carSelect.value,
             rating: rating,
