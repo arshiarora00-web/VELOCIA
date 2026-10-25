@@ -689,7 +689,7 @@
             </p>
 
 
-            <form>
+            <form id="reviewForm" novalidate>
 
 
                 <div class="review-form-grid">
@@ -697,9 +697,10 @@
 
                     <div class="form-group">
 
-                        <label>Your Name</label>
+                        <label for="reviewName">Your Name</label>
 
                         <input
+                            id="reviewName"
                             type="text"
                             placeholder="Enter your name"
                             required>
@@ -710,9 +711,9 @@
 
                     <div class="form-group">
 
-                        <label>Select Car</label>
+                        <label for="reviewCar">Select Car</label>
 
-                        <select required>
+                        <select id="reviewCar" required>
 
                             <option value="">
                                 Choose a car
@@ -734,9 +735,9 @@
 
                     <div class="form-group">
 
-                        <label>Your Rating</label>
+                        <label id="reviewRatingLabel">Your Rating</label>
 
-                        <div class="rating-select">
+                        <div class="rating-select" id="reviewRating">
 
                             ★ ★ ★ ★ ★
 
@@ -748,9 +749,10 @@
 
                     <div class="form-group">
 
-                        <label>Email Address</label>
+                        <label for="reviewEmail">Email Address</label>
 
                         <input
+                            id="reviewEmail"
                             type="email"
                             placeholder="Enter your email"
                             required>
@@ -761,9 +763,10 @@
 
                     <div class="form-group full-width">
 
-                        <label>Your Review</label>
+                        <label for="reviewText">Your Review</label>
 
                         <textarea
+                            id="reviewText"
                             placeholder="Write your experience here..."
                             required></textarea>
 
@@ -1005,6 +1008,7 @@
 </div>
 
 
+<script src="reviews-form.js"></script>
 </body>
 
 </html>
