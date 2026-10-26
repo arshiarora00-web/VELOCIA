@@ -16,6 +16,14 @@
     function write(key, v) { try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) {} }
     function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
 
+    function ago(t) {
+        var s = Math.max(1, Math.floor((Date.now() - t) / 1000));
+        if (s < 60) return "Just now";
+        var m = Math.floor(s / 60); if (m < 60) return m + " min ago";
+        var h = Math.floor(m / 60); if (h < 24) return h + " hr ago";
+        var d = Math.floor(h / 24); return d + (d === 1 ? " day ago" : " days ago");
+    }
+
     function track() {
         var file = location.pathname.split("/").pop();
         var car = CARS[file];
@@ -34,17 +42,28 @@
         var st = document.createElement("style");
         st.id = "rv-style";
         st.textContent =
-            ".rv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px}" +
-            ".rv-card{position:relative;border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden;background:#12191f;transition:.3s}" +
+            ".rv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}" +
+            ".rv-card{position:relative;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;background:#12191f;transition:.3s}" +
             ".rv-card:hover{transform:translateY(-6px);border-color:#c9a227}" +
-            ".rv-card img{width:100%;height:130px;object-fit:cover;display:block}" +
-            ".rv-body{padding:14px}" +
+            ".rv-img{position:relative}" +
+            ".rv-img img{width:100%;height:150px;object-fit:cover;display:block}" +
+            ".rv-time{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.7);color:#fff;font-size:11px;padding:3px 9px;border-radius:20px}" +
+            ".rv-body{padding:14px;display:flex;flex-direction:column;flex:1}" +
             ".rv-brand{color:#c9a227;font-size:11px;font-weight:bold;letter-spacing:1px;margin:0 0 5px}" +
-            ".rv-body h3{font-size:16px;margin:0 0 6px;color:#fff}" +
+            ".rv-body h3{font-size:16px;margin:0 0 8px;color:#fff}" +
+            ".rv-specs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}" +
+            ".rv-chip{font-size:11px;color:#cbd5e1;border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:2px 9px}" +
             ".rv-price{font-weight:bold;margin:0 0 10px;color:#fff;font-size:14px}" +
-            ".rv-link{color:#c9a227;text-decoration:none;font-size:13px}" +
+            ".rv-link{color:#c9a227;font-size:13px;margin-top:auto}" +
             ".rv-clear{display:block;margin:20px auto 0;background:none;border:1px solid #c9a227;color:#c9a227;padding:8px 18px;border-radius:6px;cursor:pointer}" +
-            ".rv-clear:hover{background:#c9a227;color:#111}";
+            ".rv-clear:hover{background:#c9a227;color:#111}" +
+            "@media(max-width:900px){.rv-grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}}" +
+            "@media(max-width:600px){" +
+              ".rv-grid{display:flex;overflow-x:auto;gap:14px;padding-bottom:10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}" +
+              ".rv-card{flex:0 0 72%;scroll-snap-align:start}" +
+              ".rv-img img{height:140px}" +
+              ".rv-clear{width:100%}" +
+            "}";
         document.head.appendChild(st);
     }
 
@@ -52,21 +71,48 @@
         var box = document.getElementById("recentlyViewed");
         if (!box) return;
         var list = read(RECENT_KEY);
-        if (!list.length) { box.style.display = "none"; return; }
+        if (box.hasAttribute("data-exclude-current")) {
+            var here = location.pathname.split("/").pop();
+            list = list.filter(function (c) { return c.link !== here; });
+        }
+        if (!list.length && !document.body.hasAttribute("data-recent-page")) { box.style.display = "none"; return; }
         injectStyle();
         box.style.display = "";
         var grid = box.querySelector(".rv-grid");
-        grid.innerHTML = list.map(function (c) {
+        if (!list.length) {
+            grid.innerHTML = '<div class="rv-empty" style="grid-column:1/-1;color:#cbd5e1;padding:28px;text-align:center;border:1px dashed #64748b;border-radius:10px">No cars viewed yet. Explore Cars and open a car to see it here.</div>';
+        } else grid.innerHTML = list.map(function (c) {
+            var specs = (c.specs || []).map(function (s) { return '<span class="rv-chip">' + esc(s) + '</span>'; }).join("");
             return '<a class="rv-card" href="' + esc(c.link) + '" style="text-decoration:none">' +
-                '<img src="' + esc(c.image) + '" alt="' + esc(c.name) + '">' +
+                '<div class="rv-img"><img src="' + esc(c.image) + '" alt="' + esc(c.name) + '" loading="lazy"><span class="rv-time">' + esc(ago(c.time)) + '</span></div>' +
                 '<div class="rv-body"><p class="rv-brand">' + esc(c.brand) + '</p><h3>' + esc(c.name) + '</h3>' +
-                '<p class="rv-price">' + esc(c.price) + '</p><span class="rv-link">View Again →</span></div></a>';
+                '<div class="rv-specs">' + specs + '</div>' +
+                '<p class="rv-price">' + esc(c.price) + '</p><span class="rv-link">View Again \u2192</span></div></a>';
         }).join("");
         var btn = box.querySelector(".rv-clear");
         if (btn) btn.onclick = function () { localStorage.removeItem(RECENT_KEY); render(); };
     }
 
+    function addNavigationLink() {
+        document.querySelectorAll(".dropdown-menu").forEach(function (menu) {
+            if (!menu.querySelector('a[href="recently-viewed.html"]')) {
+                var link = document.createElement("a");
+                link.href = "recently-viewed.html";
+                link.textContent = "Recently Viewed";
+                menu.appendChild(link);
+            }
+        });
+        document.querySelectorAll(".mobile-menu").forEach(function (menu) {
+            if (!menu.querySelector('a[href="recently-viewed.html"]')) {
+                var link = document.createElement("a");
+                link.href = "recently-viewed.html";
+                link.textContent = "Recently Viewed";
+                menu.insertBefore(link, menu.firstChild);
+            }
+        });
+    }
+
     window.VelociaRecent = { cars: CARS, getRecent: function () { return read(RECENT_KEY); }, getLog: function () { return read(LOG_KEY); } };
     track();
-    document.addEventListener("DOMContentLoaded", render);
+    document.addEventListener("DOMContentLoaded", function () { addNavigationLink(); render(); });
 })();

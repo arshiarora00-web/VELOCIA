@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recently Viewed | VELOCIA</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body{background:#0b1117;color:#f8fafc;min-height:100vh}
+    .recent-page{max-width:1200px;margin:0 auto;padding:70px 24px 90px}
+    .recent-heading{text-align:center;margin-bottom:32px}
+    .recent-heading h1{font-size:clamp(30px,4vw,44px);margin:0 0 10px;color:#fff}
+    .recent-heading p{color:#aab5c2;margin:0}
+    #recentlyViewed{display:block!important}
+    .rv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}
+    .rv-card{display:block;position:relative;border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;background:#12191f;transition:.25s}
+    .rv-card:hover{transform:translateY(-5px);border-color:#c9a227}
+    .rv-card img{width:100%;height:165px;object-fit:cover;display:block}
+    .rv-body{padding:16px}.rv-brand{color:#c9a227;font-size:11px;font-weight:700;letter-spacing:1px;margin:0 0 6px}.rv-body h3{font-size:18px;margin:0 0 8px;color:#fff}.rv-price{font-weight:700;color:#fff;margin:0 0 12px}.rv-link{color:#c9a227;font-size:13px}
+    .rv-clear{display:block;margin:28px auto 0;background:transparent;border:1px solid #c9a227;color:#c9a227;padding:10px 18px;border-radius:6px;cursor:pointer}.rv-clear:hover{background:#c9a227;color:#111}
+      @media(max-width:900px){.recent-page{padding:50px 18px 70px}.rv-card img{height:150px}}
+    @media(max-width:600px){.recent-page{padding:36px 14px 60px}.rv-grid{display:grid!important;grid-template-columns:1fr 1fr!important;overflow:visible!important;gap:12px!important}.rv-card{flex:none!important}.rv-body{padding:12px}.rv-body h3{font-size:15px}}
+    @media(max-width:380px){.rv-grid{grid-template-columns:1fr!important}}
+  </style>
+</head>
+<body data-recent-page>
+  <div class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">VELO<span>CIA</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="dropdown"><a href="cars.html" class="dropdown-title">Explore Cars <span>▾</span></a><div class="dropdown-menu"><a href="cars.html">All Cars</a><a href="brands.html">Brands</a><a href="compare.html">Compare Cars</a></div></div>
+        <div class="dropdown mobile-hide"><a href="#" class="dropdown-title">More <span>▾</span></a><div class="dropdown-menu"><a href="wishlist.html">Wishlist</a><a href="reviews.html">Reviews</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a><a href="recently-viewed.html">Recently Viewed</a></div></div>
+        <a href="login.html" class="mobile-hide">Login</a>
+      </div>
+      <a href="test-drive.html" class="btn btn-primary desktop-only">Book a Test Drive</a>
+    </div>
+    <input type="checkbox" id="menuCheckbox" class="menu-checkbox"><label for="menuCheckbox" class="hamburger"><div></div><div></div><div></div></label>
+    <div class="mobile-menu"><a href="wishlist.html">Wishlist</a><a href="reviews.html">Reviews</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a><a href="recently-viewed.html">Recently Viewed</a>
+    <a href="login.html">Login / Admin</a></div>
+  </div>
+  <main class="recent-page">
+    <div class="recent-heading"><h1>Recently Viewed</h1><p>Your recently explored cars, all in one place.</p></div>
+    <section class="section" id="recentlyViewed"><div class="rv-grid"></div><button class="rv-clear" type="button">Clear History</button></section>
+  </main>
+  <script src="recent.js"></script>
+</body>
+</html>
