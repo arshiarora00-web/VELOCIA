@@ -447,7 +447,7 @@
 
                     <p>Total Enquiries</p>
 
-                    <h2>32</h2>
+                    <h2 id="totalEnquiries">0</h2>
 
                 </div>
 
@@ -456,7 +456,7 @@
 
                     <p>New Enquiries</p>
 
-                    <h2>8</h2>
+                    <h2 id="newEnquiries">0</h2>
 
                 </div>
 
@@ -465,7 +465,7 @@
 
                     <p>Contacted Users</p>
 
-                    <h2>20</h2>
+                    <h2 id="contactedEnquiries">0</h2>
 
                 </div>
 
@@ -480,6 +480,7 @@
 
                 <input
                     type="text"
+                    id="searchEnquiry"
                     placeholder="Search by user name, car or email...">
 
             </div>
@@ -515,288 +516,12 @@
                     </thead>
 
 
-                    <tbody>
-
-
-                        <!-- ENQUIRY 1 -->
-
+                    <tbody id="enquiryTable">
                         <tr>
-
-                            <td class="user-name">
-                                Rahul Sharma
+                            <td colspan="7" style="text-align:center;">
+                                Loading enquiries...
                             </td>
-
-
-                            <td>
-
-                                rahul.sharma@email.com
-
-                                <br><br>
-
-                                +91 9876543210
-
-                            </td>
-
-
-                            <td class="car-name">
-                                BMW M4 Competition
-                            </td>
-
-
-                            <td>
-                                15 September 2026
-                            </td>
-
-
-                            <td>
-                                Interested in booking a weekend test drive.
-                            </td>
-
-
-                            <td>
-
-                                <span class="status status-new">
-                                    New
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <a href="#" class="view-btn">
-                                    View
-                                </a>
-
-                            </td>
-
                         </tr>
-
-
-
-                        <!-- ENQUIRY 2 -->
-
-                        <tr>
-
-                            <td class="user-name">
-                                Priya Verma
-                            </td>
-
-
-                            <td>
-
-                                priya.verma@email.com
-
-                                <br><br>
-
-                                +91 9876501234
-
-                            </td>
-
-
-                            <td class="car-name">
-                                Porsche 911
-                            </td>
-
-
-                            <td>
-                                18 September 2026
-                            </td>
-
-
-                            <td>
-                                Please share more details regarding available variants.
-                            </td>
-
-
-                            <td>
-
-                                <span class="status status-contacted">
-                                    Contacted
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <a href="#" class="view-btn">
-                                    View
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-
-                        <!-- ENQUIRY 3 -->
-
-                        <tr>
-
-                            <td class="user-name">
-                                Arjun Mehta
-                            </td>
-
-
-                            <td>
-
-                                arjun.mehta@email.com
-
-                                <br><br>
-
-                                +91 9876549876
-
-                            </td>
-
-
-                            <td class="car-name">
-                                Toyota Fortuner
-                            </td>
-
-
-                            <td>
-                                20 September 2026
-                            </td>
-
-
-                            <td>
-                                I want to know about the available colour options.
-                            </td>
-
-
-                            <td>
-
-                                <span class="status status-new">
-                                    New
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <a href="#" class="view-btn">
-                                    View
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-
-                        <!-- ENQUIRY 4 -->
-
-                        <tr>
-
-                            <td class="user-name">
-                                Neha Gupta
-                            </td>
-
-
-                            <td>
-
-                                neha.gupta@email.com
-
-                                <br><br>
-
-                                +91 9812345678
-
-                            </td>
-
-
-                            <td class="car-name">
-                                Tesla Model S
-                            </td>
-
-
-                            <td>
-                                22 September 2026
-                            </td>
-
-
-                            <td>
-                                Interested in learning more about the electric range.
-                            </td>
-
-
-                            <td>
-
-                                <span class="status status-pending">
-                                    Pending
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <a href="#" class="view-btn">
-                                    View
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-
-                        <!-- ENQUIRY 5 -->
-
-                        <tr>
-
-                            <td class="user-name">
-                                Rohan Kapoor
-                            </td>
-
-
-                            <td>
-
-                                rohan.kapoor@email.com
-
-                                <br><br>
-
-                                +91 9898989898
-
-                            </td>
-
-
-                            <td class="car-name">
-                                Audi RS7
-                            </td>
-
-
-                            <td>
-                                25 September 2026
-                            </td>
-
-
-                            <td>
-                                Looking for pricing and finance-related information.
-                            </td>
-
-
-                            <td>
-
-                                <span class="status status-contacted">
-                                    Contacted
-                                </span>
-
-                            </td>
-
-
-                            <td>
-
-                                <a href="#" class="view-btn">
-                                    View
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
                     </tbody>
 
                 </table>
@@ -809,7 +534,7 @@
 
     </div>
 
-
+<script src="enquiries.js"></script>
 </body>
 
 </html>

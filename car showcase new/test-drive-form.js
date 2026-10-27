@@ -99,6 +99,35 @@
         });
         if (first) { first.focus(); return; }
 
+        var enquiry = {
+        id: new Date().getTime(),
+        name: f.tdName.value.trim(),
+        phone: f.tdPhone.value.trim(),
+        email: f.tdEmail.value.trim(),
+        car: f.tdCar.value,
+        city: f.tdCity.value,
+        date: f.tdDate.value,
+        time: f.tdTime.value,
+        message: document.getElementById('tdMessage')
+        ? document.getElementById('tdMessage').value.trim()
+        : '',
+        status: 'New',
+        submittedAt: new Date().toLocaleString()
+        };
+
+        var enquiries = [];
+
+        try {
+        enquiries = JSON.parse(localStorage.getItem('velocia_enquiries')) || [];
+        } catch (error) {
+        enquiries = [];
+        }
+
+        enquiries.push(enquiry);
+
+        localStorage.setItem('velocia_enquiries', JSON.stringify(enquiries));
+
+
         success = document.createElement('div');
         success.className = 'td-success';
         success.setAttribute('role', 'status');

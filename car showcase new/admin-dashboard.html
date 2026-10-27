@@ -546,46 +546,6 @@
     </div>
 
     <script src="recent.js"></script>
-    <script>
-        function ls(k) { try { return JSON.parse(localStorage.getItem(k)) || []; } catch (e) { return []; } }
-        function esc(t) { return String(t).replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
-        function ago(ms) {
-            var m = Math.floor((Date.now() - ms) / 60000);
-            if (m < 1) return "just now";
-            if (m < 60) return m + " min ago";
-            var h = Math.floor(m / 60);
-            if (h < 24) return h + " hr ago";
-            return Math.floor(h / 24) + " day(s) ago";
-        }
-        function loadDashboard() {
-            var log = VelociaRecent.getLog();
-            document.getElementById("statCars").textContent = Object.keys(VelociaRecent.cars).length;
-            document.getElementById("statUsers").textContent = ls("velociaUsers").length;
-            document.getElementById("statViews").textContent = log.length;
-            document.getElementById("statWish").textContent = ls("wishlist").length;
-
-            var counts = {};
-            log.forEach(function (v) { counts[v.link] = (counts[v.link] || 0) + 1; });
-            var top = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; }).slice(0, 5);
-            var max = top.length ? counts[top[0]] : 1;
-            document.getElementById("topCars").innerHTML = top.length ? top.map(function (k) {
-                return '<div class="bar-row"><div class="bar-label"><span>' + esc(VelociaRecent.cars[k].name) + '</span><span>' + counts[k] + ' views</span></div>' +
-                    '<div class="bar-track"><div class="bar-fill" style="width:' + (counts[k] / max * 100) + '%"></div></div></div>';
-            }).join("") : '<p class="empty-note">No views recorded yet. Open a car page on the website.</p>';
-
-            document.getElementById("viewFeed").innerHTML = log.length ? log.slice(0, 6).map(function (v) {
-                return '<div class="activity-item"><div class="activity-icon">' + esc(v.name.charAt(0)) + '</div>' +
-                    '<div class="activity-info"><h4>' + esc(v.name) + '</h4><p>Viewed ' + ago(v.time) + '</p></div></div>';
-            }).join("") : '<p class="empty-note">Nothing viewed yet.</p>';
-        }
-        document.getElementById("clearViews").onclick = function () {
-            if (confirm("Reset all view tracking data?")) {
-                localStorage.removeItem("velociaViewLog");
-                localStorage.removeItem("velociaRecent");
-                loadDashboard();
-            }
-        };
-        loadDashboard();
-    </script>
+    <script src="admin-dashboard.js"></script>
 </body>
 </html>
